@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/HorseServer/WEB-INF/lib/postgresql-42.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/HorseServer/WEB-INF/lib/hessian-4.0.38.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

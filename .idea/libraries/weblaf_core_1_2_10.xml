@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="weblaf-core-1.2.10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Client/lib/weblaf-core-1.2.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/weblaf-demo-1.2.10-jar-with-dependencies.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/weblaf-ui-1.2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Client/lib/weblaf-demo-1.2.10-jar-with-dependencies.jar!/" />
+    </SOURCES>
+  </library>
+</component>

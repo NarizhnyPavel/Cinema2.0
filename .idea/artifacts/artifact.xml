@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="artifact">
+    <output-path>$PROJECT_DIR$/out/artifacts/artifact</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="API" />
+          <element id="module-output" name="Server" />
+          <element id="module-output" name="Client" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="hessian-4.0.38" />
+          <element id="file-copy" path="$PROJECT_DIR$/Server/lib/postgresql-42.1.4.jar" />
+          <element id="library" level="project" name="lib1" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/Server/web.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>
