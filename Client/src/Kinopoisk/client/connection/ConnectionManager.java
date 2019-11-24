@@ -3,10 +3,12 @@ package Kinopoisk.client.connection;
 import Kinopoisk.api.services.AuthenticationService;
 import Kinopoisk.api.services.DataService;
 import Kinopoisk.api.services.Ping;
+import Kinopoisk.client.UI.Login;
 import com.caucho.hessian.client.HessianConnection;
 import com.caucho.hessian.client.HessianConnectionFactory;
 import com.caucho.hessian.client.HessianProxyFactory;
 import com.caucho.hessian.client.HessianURLConnectionFactory;
+import javafx.application.Application;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,9 +18,9 @@ public class ConnectionManager {
     private static ConnectionManager instance;
     private AuthenticationService authService;
     private DataService dataService;
-    private Ping ping;
+    private static Ping ping;
 
-    private String seanceId = null;
+    private static String seanceId = null;
 
     private ConnectionManager() {
         final String url = "http://localhost:8085";
@@ -64,8 +66,18 @@ public class ConnectionManager {
     public static synchronized ConnectionManager getInstance() {
         if (instance == null) {
             instance = new ConnectionManager();
-        }
-        return instance;
+        }else
+            if (getPing())
+                return instance;
+            else {
+                System.out.println("application closed cause time out");
+                System.exit(0);
+            }
+        return null;
+    }
+
+    private static boolean getPing(){
+        return ping.ping(seanceId);
     }
 
     public AuthenticationService getAuthService() {
@@ -73,15 +85,16 @@ public class ConnectionManager {
     }
 
     public DataService getDataService() {
-        return dataService;
+            return dataService;
+
     }
 
     public void setDataService(final DataService dataService) {
         this.dataService = dataService;
     }
 
-    public void setSeanceId(final String seanceId) {
-        this.seanceId = seanceId;
+    public void setSeanceId(final String newSeanceId) {
+        this.seanceId = newSeanceId;
     }
 
 }

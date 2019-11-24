@@ -29,6 +29,7 @@ public class UserPool {
     public static void remove(String seanceId) {
         seancePool.remove(seanceId);
         touchPool.remove(seanceId);
+        timersPool.get(seanceId).stopTimer();
         timersPool.remove(seanceId);
     }
 
@@ -39,37 +40,42 @@ public class UserPool {
                 timersPool.get(seancePool.).restartTimer();*/
     }
 
-    private static class TimerTask extends java.util.TimerTask{
-        private String seanceId = "";
-        @Override
-        public void run() {
-            remove(seanceId);
-            timer.cancel();
-        }
-
-        public void setSeanceId(String seanceId){
-            this.seanceId = seanceId;
-        }
-    }
-    private static Timer timer;
+    private static int i = 0;
     private static class LogoutTimer  {
-        private TimerTask timerTask = new TimerTask();
+        private static Timer timer;
+        private TimerTask timerTask;
+        private static int id;
+        private static String sessionId;
 
-        LogoutTimer(String sessionId) {
-            timerTask.setSeanceId(sessionId);
-            timer = new Timer(true);
+        LogoutTimer(String newSessionId) {
+            sessionId = newSessionId;
+            setTimerTask();
+            timer = new Timer();
+            id = i++;
             // будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
-            timer.scheduleAtFixedRate(timerTask, 1 * 15 * 1000, 1 * 35 * 1000);
-            System.out.println("LogoutTimer начал выполнение");
-
+            timer.schedule(timerTask, 1 * 20 * 1000);
+            System.out.println("LogoutTimer начал выполнение " + id + " для " + sessionId);
         }
 
-        public void restartTimer(){
+        void setTimerTask() {
+            timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    remove(sessionId);
+                    System.out.println("остановлен LogoutTimer для " + sessionId);
+                }
+            };
+        }
+
+        void restartTimer(){
             timer.cancel();
-            timer.scheduleAtFixedRate(timerTask, 1 * 15 * 1000, 1 * 35 * 1000);
+            timer = new Timer();
+            setTimerTask();
+            System.out.println("был перезапущен " + id);
+            timer.schedule(timerTask, 1 * 20 * 1000);
         }
 
-        public void stopTimer(){
+        void stopTimer(){
             timer.cancel();
         }
     }
