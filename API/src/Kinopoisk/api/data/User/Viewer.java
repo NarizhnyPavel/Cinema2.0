@@ -1,7 +1,6 @@
 package Kinopoisk.api.data.User;
 
 import Kinopoisk.api.data.CinemaAssociation.Film.Genre;
-import Kinopoisk.api.data.User.User;
 
 import java.io.Serializable;
 

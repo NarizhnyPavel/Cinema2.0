@@ -1,16 +1,19 @@
 package Kinopoisk.client.connection;
 
+
 import Kinopoisk.api.services.AuthenticationService;
 import Kinopoisk.api.services.DataService;
 import Kinopoisk.api.services.Ping;
 import Kinopoisk.client.UI.Login;
-import com.caucho.hessian.client.HessianConnection;
-import com.caucho.hessian.client.HessianConnectionFactory;
-import com.caucho.hessian.client.HessianProxyFactory;
-import com.caucho.hessian.client.HessianURLConnectionFactory;
+import com.caucho.hessian.client.*;
+import com.caucho.hessian.io.HessianRemoteObject;
 import javafx.application.Application;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -22,6 +25,9 @@ public class ConnectionManager {
 
     private static String seanceId = null;
 
+    /**
+     *
+     */
     private ConnectionManager() {
         final String url = "http://localhost:8085";
 
@@ -52,6 +58,26 @@ public class ConnectionManager {
                     }
                 };
             }
+            @Override
+            public Object create(final Class<?> api, final URL url, final ClassLoader loader) {
+                final InvocationHandler handler = new HessianProxy(url, this, api) {
+                    @Override
+                    public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+                        try {
+                            Object invoke = super.invoke(proxy, method, args);
+                            return invoke;
+                        } catch (final Exception e) {
+                            String code =e.getMessage().substring(0, 4);
+                            if(code.equals("402:") && seanceId != null)
+                                JOptionPane.showMessageDialog(null,"Вас кинули");
+                                System.exit(-1);
+//                            System.out.println("Error: ");
+                        }
+                        return null;
+                    }
+                };
+                return Proxy.newProxyInstance(loader, new Class[]{api, HessianRemoteObject.class}, handler);
+            }
         };
         factory.setOverloadEnabled(true);
         try {
@@ -64,16 +90,13 @@ public class ConnectionManager {
     }
 
     public static synchronized ConnectionManager getInstance() {
-        if (instance == null) {
+        if (instance == null)
             instance = new ConnectionManager();
-        }else
-            if (getPing())
-                return instance;
-            else {
-                System.out.println("application closed cause time out");
-                System.exit(0);
-            }
-        return null;
+        /*if (!getPing()) {
+            System.out.println("application closed cause time out");
+            //System.exit(0);
+        }*/
+        return instance;
     }
 
     private static boolean getPing(){

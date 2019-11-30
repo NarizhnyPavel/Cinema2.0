@@ -3,7 +3,6 @@ package Kinopoisk.api.data.CinemaStudio;
 import Kinopoisk.api.data.Country.Country;
 
 import java.io.Serializable;
-import java.util.Comparator;
 
 public class CinemaStudio implements Serializable {
     private int id;

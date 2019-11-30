@@ -12,7 +12,6 @@ import Kinopoisk.api.data.FunClub.FunClub;
 import Kinopoisk.api.data.Person.Person;
 import Kinopoisk.api.data.Person.Profession;
 import Kinopoisk.api.data.User.User;
-import sun.java2d.pipe.AATileGenerator;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -55,7 +54,7 @@ public interface DataService
 
     public void updateSuperUser(User user);
 
-    TypeAssociation getTypeAssociation (int index);
+    TypeAssociation getTypeAssociation(int index);
 
     public List<Person> getPersons();
 

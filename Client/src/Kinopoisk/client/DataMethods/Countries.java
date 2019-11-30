@@ -28,10 +28,19 @@ public class Countries implements Serializable {
         return instance;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Country> getCountries() {
         return ConnectionManager.getInstance().getDataService().getCountries();
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Country getCountry(String name){
         Country country = ConnectionManager.getInstance().getDataService().getCountry(name);
         if (country != null){

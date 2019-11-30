@@ -53,7 +53,7 @@ public class UserPool {
             timer = new Timer();
             id = i++;
             // будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
-            timer.schedule(timerTask, 1 * 20 * 1000);
+            timer.schedule(timerTask, 1 * 60 * 1000);
             System.out.println("LogoutTimer начал выполнение " + id + " для " + sessionId);
         }
 
@@ -72,7 +72,7 @@ public class UserPool {
             timer = new Timer();
             setTimerTask();
             System.out.println("был перезапущен " + id);
-            timer.schedule(timerTask, 1 * 20 * 1000);
+            timer.schedule(timerTask, 1 * 60 * 1000);
         }
 
         void stopTimer(){

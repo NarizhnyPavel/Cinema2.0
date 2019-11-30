@@ -1,12 +1,7 @@
 package Kinopoisk.api.data.User;
 
-import Kinopoisk.api.services.DataService;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 

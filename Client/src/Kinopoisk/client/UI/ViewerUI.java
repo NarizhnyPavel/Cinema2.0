@@ -9,6 +9,7 @@ import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.Person.Person;
 import Kinopoisk.client.DataMethods.Person.Professions;
 import Kinopoisk.client.connection.ConnectionManager;
+import com.alee.laf.scroll.WebScrollPane;
 import com.alee.laf.window.WebWindow;
 
 import javax.swing.*;
@@ -107,7 +108,9 @@ public class ViewerUI {
         pane.add(associations,c);
 
         c.gridy = 2;
-        pane.add(new JScrollPane(films), c);
+        JScrollPane comp = new WebScrollPane(films);
+        comp.setBorder(BorderFactory.createLineBorder(Color.RED));
+        pane.add(comp, c);
     }
 
        private static class StaticListModel implements ListModel {

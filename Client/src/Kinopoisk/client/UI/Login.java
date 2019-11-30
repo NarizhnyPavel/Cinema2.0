@@ -28,7 +28,8 @@ public class Login<ButEvListener> {
 
     public static void main(String[] args) {
         WebLookAndFeel.install ();
-        jFrame.setBounds(700, 350, 100, 50);
+        jFrame.setBounds(700,
+                350, 100, 50);
 
         JPanel grid = new JPanel();
         GridLayout gridLayout= new GridLayout(3,2,10,5);

@@ -12,13 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ *
+ */
 public class HorseHessianServlet extends HessianServlet
 {
+    /**
+     *
+     */
     private static final ThreadLocal<String> seanceID = new ThreadLocal<> ();
 
     @Override
-    public void service ( final ServletRequest request, final ServletResponse response ) throws IOException, ServletException
-    {
+    public void service ( final ServletRequest request, final ServletResponse response ) throws IOException, ServletException {
         seanceID.set ( ( ( HttpServletRequest ) request ).getHeader ( "seanceID" ) );
         if ( this instanceof AuthenticationService || this instanceof Ping) {
             super.service ( request, response );
@@ -31,6 +36,7 @@ public class HorseHessianServlet extends HessianServlet
         else
         {
             ( ( HttpServletResponse ) response ).setStatus ( 402 );
+//            throw new AuthenticationException(402);
         }
     }
 }

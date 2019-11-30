@@ -1,9 +1,6 @@
 package Kinopoisk.api.data.CinemaAssociation;
 
-import Kinopoisk.api.services.DataService;
-
 import java.io.Serializable;
-import java.sql.Connection;
 
 public class TypeAssociation implements Serializable {
     private String type;
