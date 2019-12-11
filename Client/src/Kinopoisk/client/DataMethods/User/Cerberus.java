@@ -9,7 +9,13 @@ import Kinopoisk.api.data.User.User;
 import Kinopoisk.client.DataMethods.CinemaAssociation.CinemaAssociations;
 import Kinopoisk.client.connection.ConnectionManager;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link User}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Cerberus {
+    /** текущий авторизованный пользователь*/
     private static User curUser;
     private static String seanceId;
     private static Cerberus instance;

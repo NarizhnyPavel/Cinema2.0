@@ -8,7 +8,6 @@ import Kinopoisk.api.data.CinemaAssociation.Film.ReleaseDate;
 import Kinopoisk.api.data.CinemaAssociation.TypeAssociation;
 import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.Country.Country;
-import Kinopoisk.api.data.FunClub.FunClub;
 import Kinopoisk.api.data.Person.Person;
 import Kinopoisk.api.data.Person.Profession;
 import Kinopoisk.api.data.User.User;
@@ -16,6 +15,11 @@ import Kinopoisk.api.data.User.User;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Интерфейс, который описывает методы по получению данных из БД
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public interface DataService
 {
     public List<CinemaAssociation> getAssociations();
@@ -79,18 +83,6 @@ public interface DataService
     public void deleteFilm(Film film);
 
     public void updateFilm(Film film);
-
-    public List<FunClub> getFunClubs();
-
-    public FunClub getFunClub(String name);
-
-    public FunClub getFunClub(int id);
-
-    public void createFunClub(FunClub funClub);
-
-    public void deleteFunClub(FunClub funClub);
-
-    public void updateFunClub(FunClub funClub);
 
     public List<Country> getCountries();
 

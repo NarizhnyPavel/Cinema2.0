@@ -4,9 +4,15 @@ import Kinopoisk.api.data.User.User;
 
 import java.util.*;
 
+/**
+ * Класс для работы с сеансами авторизованных пользователей
+ */
 public class UserPool {
+    /** хэш-таблица идентификаторов сеансов*/
     private static Map<String, User> seancePool = new HashMap<>();
+    /** хэш-таблица "касаний" сиситемы*/
     private static Map<String, Long> touchPool = new HashMap<>();
+    /** хэш-таблица таймеров с момента последнего "касания"*/
     private static Map<String, LogoutTimer> timersPool = new HashMap<>();
 
     public static User getUser(String seanceId) {
@@ -33,13 +39,6 @@ public class UserPool {
         timersPool.remove(seanceId);
     }
 
-    public static void trashMap(){
-        /*touchPool.clear();
-        if (timersPool.size() != 0)
-            for (int i = 0; i < timersPool.size(); i++)
-                timersPool.get(seancePool.).restartTimer();*/
-    }
-
     private static int i = 0;
     private static class LogoutTimer  {
         private static Timer timer;
@@ -54,7 +53,7 @@ public class UserPool {
             id = i++;
             // будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
             timer.schedule(timerTask, 1 * 60 * 1000);
-            System.out.println("LogoutTimer начал выполнение " + id + " для " + sessionId);
+            System.out.println("LogoutTimer начал выполнение id: " + id + " для сеанса: " + sessionId);
         }
 
         void setTimerTask() {

@@ -7,6 +7,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link AgeLimit}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class AgeLimits implements Serializable {
     private static AgeLimits instance;
 
@@ -36,3 +41,4 @@ public class AgeLimits implements Serializable {
         return -1;
     }
 }
+

@@ -3,6 +3,7 @@ import Kinopoisk.api.data.CinemaAssociation.*;
 import Kinopoisk.api.data.CinemaAssociation.Film.*;
 import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.Person.Person;
+import Kinopoisk.api.data.User.UserRole;
 import Kinopoisk.client.DataMethods.Person.Professions;
 import Kinopoisk.api.data.User.User;
 import Kinopoisk.client.DataMethods.CinemaAssociation.CinemaAssociations;
@@ -23,8 +24,12 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+/**
+ * Графический интерфейс пользователя (объекта класса {@link User}) c ролью ({@link UserRole}) Moderator
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class ModeratorUI extends Applet implements ActionListener {
-    private static JTable tableModeration = new JTable();
     private static JTable tableAssociations = new JTable();
     private static JTable tableFilms = new JTable();
     private final static boolean shouldFill = true;
@@ -52,8 +57,6 @@ public class ModeratorUI extends Applet implements ActionListener {
         panelMain.add(label0);
         JLabel label1 = new JLabel("Коментарии и рецензии на модерации");
         panelMain.add(label1);
-        tableModeration.setModel(dataModelReviews);
-        panelMain.add(tableModeration);
 
 
         //ВКЛАДКА "Кинообъединения"
@@ -935,57 +938,6 @@ public class ModeratorUI extends Applet implements ActionListener {
             pane.add(save2, c);
     }
     // tables
-    public static AbstractTableModel dataModelReviews = new AbstractTableModel() {
-        @Override
-        public int getRowCount() {
-            int size = Reviews.getInstance().getReviews().size();
-            if (size < 10)
-                return 10;
-            else
-                return size;
-        }
-
-        @Override
-        public int getColumnCount() {
-            return 1;
-        }
-
-        @Override
-        public String getColumnName(int columnIndex) {
-            switch (columnIndex) {
-                case 0:
-                    return "Комментарии и рецензии";
-            }
-            return "";
-        }
-
-        @Override
-        public Class<?> getColumnClass(int columnIndex) {
-            switch (columnIndex) {
-                case 0:
-                    return String.class;
-            }
-            return null;
-        }
-
-        @Override
-        public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return false;
-
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            if (rowIndex < Reviews.getInstance().getReviews().size())
-                return Reviews.getInstance().getReviews().get(rowIndex);
-            else
-                return "рецензия " + (rowIndex + 1);
-        }
-
-        public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-
-        }
-    };
     public static AbstractTableModel dataModelAssociations = new AbstractTableModel() {
         @Override
         public int getRowCount() {

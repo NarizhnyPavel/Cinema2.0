@@ -2,6 +2,7 @@ package Kinopoisk.client.UI;
 
 import Kinopoisk.api.data.CinemaAssociation.CinemaAssociation;
 import Kinopoisk.api.data.User.User;
+import Kinopoisk.api.data.User.UserRole;
 import Kinopoisk.client.DataMethods.CinemaAssociation.CinemaAssociations;
 import Kinopoisk.client.DataMethods.User.Cerberus;
 import Kinopoisk.client.connection.ConnectionManager;
@@ -15,7 +16,11 @@ import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.*;
 
-
+/**
+ * Графический интерфейс пользователя (объекта класса {@link User}) c ролью ({@link UserRole}) SuperUser
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class SuperUserUI {
     public static JTable table = new JTable();
     public static JTable table1 = new JTable();
@@ -356,7 +361,6 @@ public class SuperUserUI {
 
         @Override
         public void windowClosing(WindowEvent e) {
-            ConnectionManager.getInstance().getAuthService().logout(Cerberus.getInstance().getSeanceId());
         }
 
         @Override

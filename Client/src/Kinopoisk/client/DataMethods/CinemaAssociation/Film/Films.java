@@ -6,12 +6,8 @@ import Kinopoisk.api.data.CinemaAssociation.Film.Genre;
 import Kinopoisk.api.data.CinemaAssociation.Film.ReleaseDate;
 import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.CinemaAssociation.*;
-import Kinopoisk.client.DataMethods.Countries;
 import Kinopoisk.api.data.Country.Country;
-import Kinopoisk.client.DataMethods.CinemaStudios;
 import Kinopoisk.api.data.Person.Person;
-import Kinopoisk.client.DataMethods.Person.Persons;
-import Kinopoisk.client.DataMethods.CinemaAssociation.CinemaAssociations;
 import Kinopoisk.client.connection.ConnectionManager;
 
 import javax.swing.*;
@@ -19,6 +15,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link Film}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Films implements Serializable {
     private static Films instance=null;
 

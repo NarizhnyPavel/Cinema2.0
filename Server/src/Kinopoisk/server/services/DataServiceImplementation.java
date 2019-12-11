@@ -8,7 +8,6 @@ import Kinopoisk.api.data.CinemaAssociation.Film.ReleaseDate;
 import Kinopoisk.api.data.CinemaAssociation.TypeAssociation;
 import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.Country.Country;
-import Kinopoisk.api.data.FunClub.FunClub;
 import Kinopoisk.api.data.Person.Person;
 import Kinopoisk.api.data.Person.Profession;
 import Kinopoisk.api.data.User.User;
@@ -79,11 +78,10 @@ public class DataServiceImplementation extends HorseHessianServlet implements Da
     @Override
     public void createAssociation(CinemaAssociation association)  {
         try {
-            DatabaseManager.getInstance().executeUpdate("INSERT INTO \"CinemaAssociations\" (name, type, moderator, \"funClub\") " +
+            DatabaseManager.getInstance().executeUpdate("INSERT INTO \"CinemaAssociations\" (name, type, moderator) " +
                     "VALUES('" + association.getName() + "', " +
                     association.getType().getType() + ", " +
-                    association.getMod().getId() + ", " +
-                    (association.getClub() != null ? association.getClub().getId() : 0)+ ")");
+                    association.getMod().getId() + ")");
             association.setId( ((CinemaAssociation)DatabaseManager.getInstance().get("select * from \"CinemaAssociations\" where name ='" + association.getName() + "'", CinemaAssociation.class).get(0)).getId());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,8 +105,7 @@ public class DataServiceImplementation extends HorseHessianServlet implements Da
                     "update \"CinemaAssociations\" set " +
                             " name ='" + association.getName() + "'," +
                             " type =" + association.getType().getType() + "," +
-                            " moderator = " + association.getMod().getId() + "," +
-                            " \"funClub\" = " + (association.getClub() != null ? association.getClub().getId() : 0) +
+                            " moderator = " + association.getMod().getId() +
                             " where id =" + association.getId() +" ;");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -397,93 +394,6 @@ public class DataServiceImplementation extends HorseHessianServlet implements Da
         }
     }
 
-    ////////////FunClubs////////////
-
-    @Override
-    public List<FunClub> getFunClubs() {
-        final List<FunClub> list;
-        try {
-            list = DatabaseManager.getInstance().get(
-                    "select * from \"funclubs\" order by id", FunClub.class);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list;
-    }
-
-    @Override
-    public FunClub getFunClub(String name) {
-        final List<FunClub> list;
-        try {
-            list = DatabaseManager.getInstance().get(
-                    "select * from \"funclubs\" where name='" + name + "' order by id", FunClub.class);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        if (list.isEmpty()) {
-            return null;
-        }
-        return ( FunClub) list.get ( 0 );
-    }
-
-    @Override
-    public FunClub getFunClub(int id) {
-        final List<FunClub> list;
-        try {
-            list = DatabaseManager.getInstance().get(
-                    "select * from \"funclubs\" where id=" + id + " order by id", FunClub.class);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        if (list.isEmpty()) {
-            return null;
-        }
-        return ( FunClub) list.get ( 0 );
-    }
-
-    @Override
-    public void createFunClub(FunClub funClub) {
-        try {
-            DatabaseManager.getInstance().executeUpdate("INSERT INTO \"funclubs\" (name, chat) " +
-                    "VALUES('" + funClub.getName() + "', '" + funClub.getChat() + "')");
-            funClub.setId(getFunClub(funClub.getName()).getId());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void deleteFunClub(FunClub funClub) {
-        try {
-            DatabaseManager.getInstance().execute(
-                    "Delete from \"funclubs\" where id=" + funClub.getId() + "");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void updateFunClub(FunClub funClub) {
-        try {
-            DatabaseManager.getInstance().execute(
-                    "update \"funclubs\" set " +
-                            " name = '" + funClub.getName() +  "'," +
-                            " chat = '" + funClub.getChat() + "' " +
-                            "WHERE id = " + funClub.getId() + " ;");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     ////////////Persons////////////
 
     public List<Person> getPersons() {
@@ -538,7 +448,7 @@ public class DataServiceImplementation extends HorseHessianServlet implements Da
         try {
             DatabaseManager.getInstance().executeUpdate("INSERT INTO \"persons\" (name, prof, \"birthDate\", country, funclub) " +
                     "VALUES('" + person.getName() + "', " + person.getProf().getId() + ", '" + person.getBirthDate() + "'," +
-                    person.getBirthCountry().getId() + "," + (person.getFunclub() != null ? person.getFunclub().getId() : 0) + ")");
+                    person.getBirthCountry().getId()  + ")");
             person.setId(getPerson(person.getName()).getId());
             return person.getId();
         } catch (SQLException e) {
@@ -565,8 +475,7 @@ public class DataServiceImplementation extends HorseHessianServlet implements Da
                             " name = '" + person.getName() +  "'," +
                             " prof = " + person.getProf().getId() + "," +
                             " \"birthDate\" = '" + person.getBirthDate()+ "'," +
-                            " country = " + person.getBirthCountry().getId() + "," +
-                            " funclub = "+ person.getFunclub().getId() + "" +
+                            " country = " + person.getBirthCountry().getId()+
                             "WHERE id = " + person.getId() + " ;");
         } catch (SQLException e) {
             e.printStackTrace();

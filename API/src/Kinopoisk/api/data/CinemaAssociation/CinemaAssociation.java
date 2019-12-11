@@ -1,22 +1,42 @@
 package Kinopoisk.api.data.CinemaAssociation;
 
-import Kinopoisk.api.data.FunClub.FunClub;
 import Kinopoisk.api.data.User.User;
-
 import java.io.Serializable;
-import java.util.Comparator;
 
+/**
+ * Класс, описывающий кинообъединение, группирующее фильмы, и обладает свойствами:
+ * <b>тип</b>, <b>имя</b>, <b>модератор</b>, <b></b>.
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class CinemaAssociation implements Serializable {
-    private TypeAssociation type;
+    /** Поле числового идентифика объекта*/
     private int id;
+    /** Поле типа объединения
+     * @see TypeAssociation
+     * */
+    private TypeAssociation type;
+    /** Поле имени объединения*/
     private String name;
+    /** Поле курирующего пользователь с правами модератора
+     * @see User
+     * */
     private User mod;
-    private FunClub club = null; //for version 2.0
 
-    public void setClub(FunClub club) {
-        this.club = club;
-    }
+    /**
+     * Конструктор - создание нового объека
+     */
+    public CinemaAssociation() {    }
 
+    /**
+     * Конструктор - создание нового объека со свойствами
+     * @param id - числового идентифика
+     * @param type - тип объединения
+     * @see TypeAssociation
+     * @param name - имя объединения
+     * @param mod - курирующий пользователь с правами модератора
+     * @see User
+     */
     public CinemaAssociation(int id, TypeAssociation type, String name, User mod) {
         this.id = id;
         this.type = type;
@@ -24,70 +44,84 @@ public class CinemaAssociation implements Serializable {
         this.mod = mod;
     }
 
-    public CinemaAssociation() {
-
-    }
-
-    public CinemaAssociation(TypeAssociation type, String name, User mod, FunClub club) {
-        this.type = type;
-        this.name = name;
-        this.mod = mod;
-        this.club = club;
-    }
-
+    /**
+     * Конструктор - создание нового объека со свойствами
+     * @param type - тип объединения
+     * @see TypeAssociation
+     * @param name - имя объединения
+     * @param mod - курирующий пользователь с правами модератора
+     * @see User
+     */
     public CinemaAssociation(TypeAssociation type, String name, User mod) {
         this.type = type;
         this.name = name;
         this.mod = mod;
     }
 
+    /**
+     * Процедура определения поля {@link CinemaAssociation#id}
+     * @param id - числовой идентификатор
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Функция получения значения поля {@link CinemaAssociation#id}
+     * @return числовой идентификатор
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Функция получения значения поля {@link CinemaAssociation#name}
+     * @return имя кинообъединения
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Функция получения значения поля {@link CinemaAssociation#type}
+     * @return тип объединения
+     * @see TypeAssociation
+     */
     public TypeAssociation getType() {
         return type;
     }
 
-    public String getTypeString(){
-        return type.getTypeString();
-    }
-
+    /**
+     * Процедура определения поля {@link CinemaAssociation#type}
+     * @param type - тип кинобъединения
+     * @see TypeAssociation
+     */
     public void setType(TypeAssociation type) {
         this.type = type;
     }
 
+    /**
+     * Процедура определения поля {@link CinemaAssociation#name}
+     * @param name - имя кинообъединения
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Процедура определения поля {@link CinemaAssociation#mod}
+     * @return - пользователь с правами модератора
+     */
     public User getMod() {
         return mod;
     }
 
-    public FunClub getClub() {
-        return club;
-    }
-
+    /**
+     * Процедура определения поля {@link CinemaAssociation#mod}
+     * @param mod - пользователь с правами модератора
+     */
     public void setMod(User mod) {
         this.mod = mod;
     }
 
-    public static class Comparators {
-
-        public static Comparator<CinemaAssociation> NAME = new Comparator<CinemaAssociation>() {
-            @Override
-            public int compare(CinemaAssociation o1, CinemaAssociation o2) {
-                return o1.name.compareTo(o2.name);
-            }
-        };
-    }
 }

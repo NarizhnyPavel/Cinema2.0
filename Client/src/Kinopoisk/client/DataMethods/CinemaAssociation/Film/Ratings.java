@@ -4,6 +4,11 @@ import Kinopoisk.api.data.CinemaAssociation.Film.Rating;
 
 import java.util.ArrayList;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link Rating}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Ratings {
     private static Ratings instance;
     private ArrayList<Rating> ratings;

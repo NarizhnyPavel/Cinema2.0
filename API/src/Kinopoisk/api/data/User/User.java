@@ -5,11 +5,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+/**
+ * Класс, описывающий пользователя
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class User implements Serializable {
+    /** числовой идентификатор*/
     protected long id;
+    /** имя пользователя*/
     protected String userName;
+    /** роль в системе {@link UserRole}*/
     protected UserRole role;
+    /** время последнего входа в систему*/
     protected Long lastSession;
+    /** пароль*/
     protected String password;
 
     public User() {
@@ -41,8 +51,8 @@ public class User implements Serializable {
         this.role = role;
         this.password = password;
         this.lastSession = lastSession;
-        /*if (lastSession == 0)
-            this.updateSession();*/
+        if (lastSession == 0)
+            this.updateSession();
     }
 
     public long getId() {
@@ -53,6 +63,9 @@ public class User implements Serializable {
         this.role = role;
     }
 
+    /**
+     * Процедура обновления поля {@link }
+     */
     public void updateSession(){
         this.lastSession = new Date().getTime();
         }
@@ -78,6 +91,9 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    /**
+     * метод по созданию случайного пароля
+     */
     public void setRandomPassword(){
         int from = 8;
         int to = 12;

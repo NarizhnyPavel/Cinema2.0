@@ -1,13 +1,10 @@
 package Kinopoisk.client.connection;
 
-
 import Kinopoisk.api.services.AuthenticationService;
 import Kinopoisk.api.services.DataService;
 import Kinopoisk.api.services.Ping;
-import Kinopoisk.client.UI.Login;
 import com.caucho.hessian.client.*;
 import com.caucho.hessian.io.HessianRemoteObject;
-import javafx.application.Application;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -17,6 +14,11 @@ import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Класс, описывающий инициализацию соединения с сервером и инициализацию интерфейсов на стороне клиентов
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class ConnectionManager {
     private static ConnectionManager instance;
     private AuthenticationService authService;
@@ -24,10 +26,6 @@ public class ConnectionManager {
     private static Ping ping;
 
     private static String seanceId = null;
-
-    /**
-     *
-     */
     private ConnectionManager() {
         final String url = "http://localhost:8085";
 
@@ -67,11 +65,10 @@ public class ConnectionManager {
                             Object invoke = super.invoke(proxy, method, args);
                             return invoke;
                         } catch (final Exception e) {
-                            String code =e.getMessage().substring(0, 4);
+                            String code = e.getMessage().substring(0, 4);
                             if(code.equals("402:") && seanceId != null)
-                                JOptionPane.showMessageDialog(null,"Вас кинули");
+                                JOptionPane.showMessageDialog(null,"Произошёл автоматический выход из системы.");
                                 System.exit(-1);
-//                            System.out.println("Error: ");
                         }
                         return null;
                     }
@@ -92,10 +89,6 @@ public class ConnectionManager {
     public static synchronized ConnectionManager getInstance() {
         if (instance == null)
             instance = new ConnectionManager();
-        /*if (!getPing()) {
-            System.out.println("application closed cause time out");
-            //System.exit(0);
-        }*/
         return instance;
     }
 
@@ -110,10 +103,6 @@ public class ConnectionManager {
     public DataService getDataService() {
             return dataService;
 
-    }
-
-    public void setDataService(final DataService dataService) {
-        this.dataService = dataService;
     }
 
     public void setSeanceId(final String newSeanceId) {

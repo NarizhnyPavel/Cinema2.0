@@ -1,21 +1,19 @@
 package Kinopoisk.client.DataMethods.CinemaAssociation;
 
 import Kinopoisk.api.data.CinemaAssociation.CinemaAssociation;
-import Kinopoisk.api.data.CinemaAssociation.TypeAssociation;
-import Kinopoisk.api.data.CinemaAssociation.TypeAssociations;
 import Kinopoisk.api.data.User.User;
-import Kinopoisk.api.services.DataService;
-import Kinopoisk.client.DataMethods.*;
-import Kinopoisk.client.DataMethods.FunClub.FunClubs;
-import Kinopoisk.client.DataMethods.User.Cerberus;
 import Kinopoisk.client.connection.ConnectionManager;
 
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link CinemaAssociation}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class CinemaAssociations {
     private static CinemaAssociations instance;
 

@@ -13,13 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *
+ * Класс, инициализирующий сервис Hessian Servlets для передачи пакетов между клиентом и сервером через веб интерфейс
+ * @author Kondrat'eva N.U.
+ * @version 1.0
  */
 public class HorseHessianServlet extends HessianServlet
 {
-    /**
-     *
-     */
     private static final ThreadLocal<String> seanceID = new ThreadLocal<> ();
 
     @Override

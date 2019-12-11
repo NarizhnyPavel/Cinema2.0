@@ -7,81 +7,69 @@ import Kinopoisk.api.data.Person.Person;
 
 import java.io.Serializable;
 
+/**
+ * Класс, описывающий фильм
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Film implements Serializable {
+    /** Поле числового идентификатора*/
     private long id;
+    /** Поле родительского кинообъединения {@link CinemaAssociation}*/
     private CinemaAssociation cinemaAss;
+    /** Поле строкового имени*/
     private String name;
-    private ReleaseDate releaseDate; //link on another class
+    /** Поле даты выхода картины {@link ReleaseDate}*/
+    private ReleaseDate releaseDate;
+    /** Поле режиссёра {@link Person}*/
     private Person dir;
+    /** Поле сценариста {@link Person}*/
     private Person writer;
-    private Cast cast;
+    /** Поле рейтинга {@link Rating}*/
     private Rating rate;
+    /** Поле жанра {@link Genre}*/
     private Genre genre;
+    /** Поле страны {@link Country}*/
     private Country country;
+    /** Поле возрастного ограничения {@link AgeLimit}*/
     private AgeLimit ageLim;
+    /** Поле киностудии {@link CinemaStudio}*/
     private CinemaStudio studio;
+    /** Поле подробного описания */
     private String discript;
-    private Review rev;
+    /** Поле бюджета */
     private long money; // system may generate string from integer 1000000000 -> "1 млрд"
+    /** Поле ссылки на трейлер */
     private String trailer; //here will be link on website
+    /** Поле ссылки на постер */
     private String poster; //here will be link on photo. at first version name of file
+    /** Поле продолжительности фильма */
     private long duration;
+    /** Поле количества серий. Применяется в случае описания сезона сериала */
     private int countSeries;
+    /** Поле бюджета */
     private long budget; // 1250000 -> "1.25 млн"
+    /** Поле количества зрителей */
     private long count_of_viewers;
 
+    /**
+     * Конструктор - создание нового объекта
+     */
     public Film() {
     }
 
-    public void setAgeLim(AgeLimit ageLim) {
-        this.ageLim = ageLim;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
-    public Film (CinemaAssociation ass, String name, ReleaseDate date, Person dir, Genre genre, Country country, AgeLimit ageLim){
-        this.cinemaAss = ass;
-        this.name = name;
-        this.releaseDate = date;
-        this.dir = dir;
-        this.genre = genre;
-        this.country = country;
-        this.ageLim = ageLim;
-    }
-
-    public Person getDir() {
-        return dir;
-    }
-
-    public Film(long id, CinemaAssociation cinemaAss, String name, ReleaseDate releaseDate, Person dir, Person writer, Country country, CinemaStudio studio) {
-        this.id = id;
-        this.cinemaAss = cinemaAss;
-        this.name = name;
-        this.releaseDate = releaseDate;
-        this.dir = dir;
-        this.writer = writer;
-        this.country = country;
-        this.studio = studio;
-    }
-
+    /**
+     * Конструктор - создание нового объекта со свойствами
+     * @param cinemaAss - кинообъединение {@link CinemaAssociation}
+     * @param name - имя фильма
+     * @param releaseDate - дата выхода {@link ReleaseDate}
+     * @param dir - режиссёр {@link Person}
+     * @param writer - сценарист {@link Person}
+     * @param country - страна {@link Country}
+     * @param studio - киностудия {@link CinemaStudio}
+     * @param ageLimit - возрастное ограничение {@link AgeLimit}
+     * @param genre - жанр {@link Genre}
+     */
     public Film(CinemaAssociation cinemaAss, String name, ReleaseDate releaseDate, Person dir, Person writer, Country country, CinemaStudio studio, AgeLimit ageLimit, Genre genre) {
         this.cinemaAss = cinemaAss;
         this.name = name;
@@ -94,71 +82,169 @@ public class Film implements Serializable {
         this.genre = genre;
     }
 
+    /**
+     * Процедура определения поля {@link Film#ageLim}
+     * @param ageLim - возрастное ограничение {@link AgeLimit}
+     */
+    public void setAgeLim(AgeLimit ageLim) {
+        this.ageLim = ageLim;
+    }
 
+    /**
+     *
+     * @return
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Процедура определения поля {@link Film#ageLim}
+     * @param id - возрастное ограничение {@link AgeLimit}
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * Процедура определения поля {@link Film#genre}
+     * @param genre - жанр
+     */
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    /**
+     * Процедура определения поля {@link Film#poster}
+     * @param poster - ссылка на постер
+     */
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public Person getDir() {
+        return dir;
+    }
+
+    /**
+     * Процедура определения поля {@link Film#ageLim}
+     * @param cinemaAss - кинообъединение
+     */
     public void setCinemaAss(CinemaAssociation cinemaAss) {
         this.cinemaAss = cinemaAss;
     }
 
+    /**
+     * Процедура определения поля {@link Film#name}
+     * @param name - имя фильма
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Процедура определения поля {@link Film#releaseDate}
+     * @param releaseDate - дата выхода
+     */
     public void setReleaseDate(ReleaseDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#writer}
+     * @return - сценарист
+     */
     public Person getWriter() {
         return writer;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#studio}
+     * @return - киностудия
+     */
     public CinemaStudio getStudio() {
         return studio;
     }
 
+    /**
+     * Процедура определения поля {@link Film#dir}
+     * @param dir - режиссёр
+     */
     public void setDir(Person dir) {
         this.dir = dir;
     }
 
+    /**
+     * Процедура определения поля {@link Film#writer}
+     * @param writer - сценарист
+     */
     public void setWriter(Person writer) {
         this.writer = writer;
     }
 
+    /**
+     * Процедура определения поля {@link Film#country}
+     * @param country - страна
+     */
     public void setCountry(Country country) {
         this.country = country;
     }
 
+    /**
+     * Процедура определения поля {@link Film#studio}
+     * @param studio - киностудия
+     */
     public void setStudio(CinemaStudio studio) {
         this.studio = studio;
     }
 
-    public Film(CinemaAssociation cinemaAss, String name, ReleaseDate releaseDate, Person dir, Country country, AgeLimit ageLim) {
-        this.cinemaAss = cinemaAss;
-        this.name = name;
-        this.releaseDate = releaseDate;
-        this.dir = dir;
-        this.country = country;
-        this.ageLim = ageLim;
-    }
-
+    /**
+     * Функция получения значения поля {@link Film#name}
+     * @return - название фильма
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#releaseDate}
+     * @return - дата выхода
+     */
     public ReleaseDate getReleaseDate() {
         return releaseDate;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#genre}
+     * @return - жанр
+     */
     public Genre getGenre() {
         return genre;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#country}
+     * @return - страна происхожденя
+     */
     public Country getCountry() {
         return country;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#ageLim}
+     * @return - возрастное ограничение
+     */
     public AgeLimit getAgeLim() {
         return ageLim;
     }
 
+    /**
+     * Функция получения значения поля {@link Film#cinemaAss}
+     * @return - кинообъединение
+     */
     public CinemaAssociation getCinemaAss(){return cinemaAss;}
 }

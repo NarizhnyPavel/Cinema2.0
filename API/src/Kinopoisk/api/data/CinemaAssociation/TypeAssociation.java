@@ -2,20 +2,44 @@ package Kinopoisk.api.data.CinemaAssociation;
 
 import java.io.Serializable;
 
+/**
+ * Класс, описывающий тип кинообъединения <br>
+ * индекс типа - идентификатор для типа из фиксированного списка {@link TypeAssociations}
+ * @see CinemaAssociation
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class TypeAssociation implements Serializable {
+    /** Поле строквого имени типа*/
     private String type;
 
+    /**
+     * Конструктор - создание нового объекта
+     */
+    public TypeAssociation() {
+    }
+
+    /**
+     * Конструктор - создание нового объекта со свойствами
+     * @param type - строковое имя типа
+     */
     public TypeAssociation(String type) {
         this.type = type;
     }
 
-    public TypeAssociation() {
-    }
-
+    /**
+     * Функция получения значения поля {@link TypeAssociation#type}
+     * @return - строковое имя типа
+     */
     public String getTypeString() {
         return type;
     }
 
+    /**
+     * Функци получения объекта по его индексу
+     * @param index - номер типа.
+     * @return
+     */
     public TypeAssociation getType(int index){
 
         switch (index){
@@ -25,11 +49,14 @@ public class TypeAssociation implements Serializable {
                 return TypeAssociations.SINGLE;
             case 3:
                 return TypeAssociations.SERIAL;
-
         }
         return TypeAssociations.SINGLE;
     }
 
+    /**
+     * Функция получения значения поля {@link TypeAssociation#type}
+     * @return - индекс типа
+     */
     public int getType(){
         if (this.type.equals("GROUP"))
             return 1;
@@ -40,6 +67,10 @@ public class TypeAssociation implements Serializable {
         return 0;
     }
 
+    /**
+     * Процедура определения поля {@link TypeAssociation#type}
+     * @return
+     */
     public void setType(String type) {
         this.type = type;
     }

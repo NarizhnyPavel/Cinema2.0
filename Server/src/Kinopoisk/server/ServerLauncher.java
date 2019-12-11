@@ -5,6 +5,9 @@ import Kinopoisk.server.database.DatabaseManager;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+/**
+ * Класс - обёртка для инициализации {@link DatabaseManager}
+ */
 public class ServerLauncher implements ServletContextListener
 {
     @Override

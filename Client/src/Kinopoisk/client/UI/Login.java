@@ -15,11 +15,20 @@ import java.awt.event.MouseEvent;
 
 import static java.awt.event.MouseEvent.MOUSE_CLICKED;
 
+/**
+ * Графический интерфейс авторизации пользователей
+ * @author Narizhny Pavel
+ * @version 1.0
+ * @param <ButEvListener>
+ */
 public class Login<ButEvListener> {
+
     public  static JLabel userName = new JLabel("Login:");
+
     public  static JLabel password = new JLabel("Password:");
 
     public static JTextField enterUserName = new JTextField(20);
+
     public static JPasswordField enterPassword = new JPasswordField(20);
 
     public static JButton login = new JButton("Войти");
@@ -27,7 +36,7 @@ public class Login<ButEvListener> {
     public static JFrame jFrame = new JFrame("Вход");
 
     public static void main(String[] args) {
-        WebLookAndFeel.install ();
+        //WebLookAndFeel.install ();
         jFrame.setBounds(700,
                 350, 100, 50);
 
@@ -65,7 +74,7 @@ public class Login<ButEvListener> {
             {
                 String seanceId = ConnectionManager.getInstance().getAuthService().login(enterUserName.getText(), enterPassword.getText());
                 ConnectionManager.getInstance().setSeanceId(seanceId);
-                if (seanceId != null) {
+                if (seanceId != "mur") {
                     User authorizedUser = ConnectionManager.getInstance().getDataService().getUser(enterUserName.getText());
                     Cerberus.getInstance().setCurUser(authorizedUser);
                     Cerberus.getInstance().setSeanceId(seanceId);

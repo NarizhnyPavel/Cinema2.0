@@ -2,8 +2,15 @@ package Kinopoisk.api.data.User;
 
 import java.io.Serializable;
 
+/**
+ * Класс, описывающий роль в системе для {@link User}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class UserRole implements Serializable {
+    /** числовой идентификатор*/
     private int id;
+    /** имя роли*/
     private String name;
 
     public UserRole(int id, String name) {

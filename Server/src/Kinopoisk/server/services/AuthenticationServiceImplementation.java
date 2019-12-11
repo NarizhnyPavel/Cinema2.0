@@ -10,8 +10,17 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Класс, реалзующий методы сервиса {@link AuthenticationService}
+ */
 public class AuthenticationServiceImplementation extends HorseHessianServlet implements AuthenticationService
 {
+    /**
+     * метод, авторизующий пользователя с переданными полями:
+     * @param login - имя пользователя в системе
+     * @param password - пароль пользователя
+     * @return в случае успешной авторизации: идентификатор сеанса, в ином случае: код ошибки
+     */
     @Override
     public String login (final String login, final String password )
     {
@@ -24,7 +33,7 @@ public class AuthenticationServiceImplementation extends HorseHessianServlet imp
             if ( list.size () == 1 )
             {
                 final User user = ( User ) list.get ( 0 );
-                final String s = UUID.randomUUID ().toString ();
+                final String s = UUID.randomUUID ().toString (); // get seanceId
                 UserPool.add ( s, user );
                 return s;
             }
@@ -34,11 +43,13 @@ public class AuthenticationServiceImplementation extends HorseHessianServlet imp
             e.printStackTrace ();
         }
 
-        return null;
+        return "mur";
     }
 
-
-
+    /**
+     * метод для выхода пользователя из системы по данному
+     * @param seanceId - идентификатору сеанса
+     */
     @Override
     public void logout(String seanceId) {
         UserPool.remove(seanceId);

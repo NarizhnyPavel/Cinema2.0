@@ -7,6 +7,8 @@ import Kinopoisk.api.data.CinemaAssociation.Film.Genre;
 import Kinopoisk.api.data.CinemaAssociation.Film.ReleaseDate;
 import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.Person.Person;
+import Kinopoisk.api.data.User.User;
+import Kinopoisk.api.data.User.UserRole;
 import Kinopoisk.client.DataMethods.Person.Professions;
 import Kinopoisk.client.connection.ConnectionManager;
 import com.alee.laf.scroll.WebScrollPane;
@@ -21,6 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * Графический интерфейс пользователя (объекта класса {@link User}) c ролью ({@link UserRole}) Viewer
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class ViewerUI {
     public static JFrame frame;
     public static JComboBox associations;
@@ -108,7 +115,7 @@ public class ViewerUI {
         pane.add(associations,c);
 
         c.gridy = 2;
-        JScrollPane comp = new WebScrollPane(films);
+        JScrollPane comp = new JScrollPane(films);
         comp.setBorder(BorderFactory.createLineBorder(Color.RED));
         pane.add(comp, c);
     }

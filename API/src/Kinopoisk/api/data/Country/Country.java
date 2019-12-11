@@ -1,11 +1,18 @@
 package Kinopoisk.api.data.Country;
 
 import java.io.Serializable;
-import java.util.Comparator;
 
+/**
+ * Класс, описывающий страну
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Country implements Serializable {
+    /** Поле числового идентификатора*/
     private int id;
+    /** Поле названия страны*/
     private String name;
+
 
     public Country() {
     }
@@ -15,9 +22,7 @@ public class Country implements Serializable {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;
@@ -33,15 +38,5 @@ public class Country implements Serializable {
 
     public String getName() {
         return name;
-    }
-
-    public static class Comparators {
-
-        public static Comparator<Country> NAME = new Comparator<Country>() {
-            @Override
-            public int compare(Country o1, Country o2) {
-                return o1.name.compareTo(o2.name);
-            }
-        };
     }
 }

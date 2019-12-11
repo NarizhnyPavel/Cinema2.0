@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link Country}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Countries implements Serializable {
     private static Countries instance;
 

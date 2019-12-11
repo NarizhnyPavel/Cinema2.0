@@ -7,6 +7,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link Profession}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class Professions  implements Serializable {
     private static Professions instance;
 

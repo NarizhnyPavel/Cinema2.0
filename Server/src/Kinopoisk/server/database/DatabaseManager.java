@@ -8,7 +8,6 @@ import Kinopoisk.api.data.CinemaAssociation.Film.ReleaseDate;
 import Kinopoisk.api.data.CinemaAssociation.TypeAssociation;
 import Kinopoisk.api.data.CinemaStudio.CinemaStudio;
 import Kinopoisk.api.data.Country.Country;
-import Kinopoisk.api.data.FunClub.FunClub;
 import Kinopoisk.api.data.Person.Person;
 import Kinopoisk.api.data.Person.Profession;
 import Kinopoisk.api.data.User.User;
@@ -22,11 +21,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, описывающий методы по инициализации соединения с СУБД Postegrace и обработке SQL запросов
+ */
 public class DatabaseManager
 {
     private static DatabaseManager instance;
     private Connection connection;
 
+    /**
+     * инициализация соединения с локальной СУБД
+     */
     private DatabaseManager ()
     {
         try
@@ -79,6 +84,13 @@ public class DatabaseManager
         return result;
     }
 
+    /**
+     * метод возвращающий объект класса, исходя из ответа СУБД
+     * @param resultSet - параметр, возвращаемый СУБД. содержит ответ на запрос
+     * @param clazz - имя класса, объект которого необходимо "построить"
+     * @return - объект заданного класса
+     * @throws SQLException
+     */
     private Object buildObject ( final ResultSet resultSet, final Class clazz ) throws SQLException
     {
         if ( clazz.equals ( User.class ) )
@@ -95,7 +107,6 @@ public class DatabaseManager
                     e.printStackTrace();
                 }
             }
-
             return user;
         }
 
@@ -177,15 +188,6 @@ public class DatabaseManager
             //person.setFunclub(dataService.getFunClub(resultSet.getInt("finclub")));
 
             return person;
-        }
-        if (clazz.equals(FunClub.class))
-        {
-            final FunClub funClub = new FunClub();
-            funClub.setName(resultSet.getString("name"));
-            funClub.setId(resultSet.getInt("id"));
-            funClub.setChat(resultSet.getString("chat"));
-
-            return funClub;
         }
 
         if (clazz.equals(Country.class)) {

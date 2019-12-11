@@ -8,10 +8,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import Kinopoisk.api.data.User.User;
 import Kinopoisk.api.services.DataService;
 import Kinopoisk.client.DataMethods.*;
 import Kinopoisk.client.connection.ConnectionManager;
 
+/**
+ * Класс, описывабщий методы по работе с объектами класса {@link CinemaStudio}
+ * @author Narizhny Pavel
+ * @version 1.0
+ */
 public class CinemaStudios {
     private static CinemaStudios instance;
 
