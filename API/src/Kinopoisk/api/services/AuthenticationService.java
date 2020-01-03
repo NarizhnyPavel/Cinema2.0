@@ -1,5 +1,7 @@
 package Kinopoisk.api.services;
 
+import java.sql.SQLException;
+
 /**
  * Интерфейс, который описывает методы авторизации пользователей в системе
  * @author Narizhny Pavel
@@ -7,7 +9,7 @@ package Kinopoisk.api.services;
  */
 public interface AuthenticationService
 {
-    String login(String login, String password);
+    String login(String login, String password) throws SQLException;
 
     void logout(String seanceId);
 }

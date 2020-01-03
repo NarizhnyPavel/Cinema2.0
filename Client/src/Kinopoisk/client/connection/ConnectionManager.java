@@ -24,10 +24,10 @@ public class ConnectionManager {
     private AuthenticationService authService;
     private DataService dataService;
     private static Ping ping;
+    private static String url = "http://localhost:8085";
 
     private static String seanceId = null;
     private ConnectionManager() {
-        final String url = "http://localhost:8085";
 
         final HessianProxyFactory factory = new HessianProxyFactory() {
             @Override
@@ -109,4 +109,7 @@ public class ConnectionManager {
         this.seanceId = newSeanceId;
     }
 
+    public static void setUrl(String newUrl) {
+        url = newUrl;
+    }
 }

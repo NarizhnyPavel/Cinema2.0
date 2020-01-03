@@ -35,7 +35,6 @@ public class HorseHessianServlet extends HessianServlet
         else
         {
             ( ( HttpServletResponse ) response ).setStatus ( 402 );
-//            throw new AuthenticationException(402);
         }
     }
 }

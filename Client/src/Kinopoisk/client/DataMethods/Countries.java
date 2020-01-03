@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Класс, описывабщий методы по работе с объектами класса {@link Country}
+ * Класс, описывающий методы по работе с объектами класса {@link Country}
  * @author Narizhny Pavel
  * @version 1.0
  */

@@ -10,7 +10,7 @@ import Kinopoisk.client.DataMethods.CinemaAssociation.CinemaAssociations;
 import Kinopoisk.client.connection.ConnectionManager;
 
 /**
- * Класс, описывабщий методы по работе с объектами класса {@link User}
+ * Класс, описывающий методы по работе с объектами класса {@link User}
  * @author Narizhny Pavel
  * @version 1.0
  */

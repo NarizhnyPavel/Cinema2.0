@@ -12,6 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import static java.awt.event.MouseEvent.MOUSE_CLICKED;
 
@@ -19,9 +20,8 @@ import static java.awt.event.MouseEvent.MOUSE_CLICKED;
  * Графический интерфейс авторизации пользователей
  * @author Narizhny Pavel
  * @version 1.0
- * @param <ButEvListener>
  */
-public class Login<ButEvListener> {
+public class Login {
 
     public  static JLabel userName = new JLabel("Login:");
 
@@ -29,9 +29,13 @@ public class Login<ButEvListener> {
 
     public static JTextField enterUserName = new JTextField(20);
 
+    public static JTextField host = new JTextField(20);
+
     public static JPasswordField enterPassword = new JPasswordField(20);
 
     public static JButton login = new JButton("Войти");
+
+    public static JButton cancel = new JButton("Отмена");
 
     public static JFrame jFrame = new JFrame("Вход");
 
@@ -41,15 +45,20 @@ public class Login<ButEvListener> {
                 350, 100, 50);
 
         JPanel grid = new JPanel();
-        GridLayout gridLayout= new GridLayout(3,2,10,5);
+        GridLayout gridLayout= new GridLayout(4,2,10,5);
         grid.setLayout(gridLayout);
 
+        host.setText("http://localhost:8085");
+        grid.add(host);
+        grid.add(new JPanel());
         grid.add(userName);
         grid.add(enterUserName);
         grid.add(password);
         grid.add(enterPassword);
         login.addActionListener(new Login.ButEvListener());
+        cancel.addActionListener(new ButEventListner1());
         grid.add(login);
+        grid.add(cancel);
         authorizeViewer();
 
         jFrame.getContentPane().add(grid);
@@ -72,9 +81,15 @@ public class Login<ButEvListener> {
         public void actionPerformed(ActionEvent e) {
             if (!enterUserName.getText().isEmpty() && !enterPassword.getText().isEmpty())
             {
-                String seanceId = ConnectionManager.getInstance().getAuthService().login(enterUserName.getText(), enterPassword.getText());
+                String seanceId = null;
+                ConnectionManager.setUrl("" + host.getText());
+                try {
+                    seanceId = ConnectionManager.getInstance().getAuthService().login(enterUserName.getText(), enterPassword.getText());
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 ConnectionManager.getInstance().setSeanceId(seanceId);
-                if (seanceId != "mur") {
+                if (!(seanceId.equals("passError") && seanceId.equals("nameError"))) {
                     User authorizedUser = ConnectionManager.getInstance().getDataService().getUser(enterUserName.getText());
                     Cerberus.getInstance().setCurUser(authorizedUser);
                     Cerberus.getInstance().setSeanceId(seanceId);
@@ -103,10 +118,22 @@ public class Login<ButEvListener> {
                             break;
                     }
                     jFrame.setVisible(false);
-                }else
-                    JOptionPane.showMessageDialog(null, "Неверное имя пользователя или пароль!", "Ошибка", JOptionPane.PLAIN_MESSAGE);
+                }else{
+                    if (seanceId.equals("nameError"))
+                        JOptionPane.showMessageDialog(null, "Неверное имя пользователя!", "Ошибка", JOptionPane.PLAIN_MESSAGE);
+                    if (seanceId.equals("passError"))
+                        JOptionPane.showMessageDialog(null, "Неверный пароль!", "Ошибка", JOptionPane.PLAIN_MESSAGE);
+                }
 
             }
+        }
+    }
+
+    public static class ButEventListner1 implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.exit(-1);
         }
     }
 }

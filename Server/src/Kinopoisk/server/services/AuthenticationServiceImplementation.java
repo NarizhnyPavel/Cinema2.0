@@ -22,8 +22,7 @@ public class AuthenticationServiceImplementation extends HorseHessianServlet imp
      * @return в случае успешной авторизации: идентификатор сеанса, в ином случае: код ошибки
      */
     @Override
-    public String login (final String login, final String password )
-    {
+    public String login (final String login, final String password ) throws SQLException {
         try
         {
             final List<User> list = DatabaseManager.getInstance ().get (
@@ -42,7 +41,14 @@ public class AuthenticationServiceImplementation extends HorseHessianServlet imp
         {
             e.printStackTrace ();
         }
-
+        if (DatabaseManager.getInstance ().get (
+                "select * from \"user\" where " +
+                        "\"userName\" = '" + login + "'", User.class ).size() == 1)
+            return "passError";
+        if (DatabaseManager.getInstance ().get (
+                "select * from \"user\" where " +
+                        "\"userName\" = '" + login + "'", User.class ).size() == 0)
+            return "nameError";
         return "mur";
     }
 

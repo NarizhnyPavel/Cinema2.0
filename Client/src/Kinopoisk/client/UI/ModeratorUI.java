@@ -40,9 +40,12 @@ public class ModeratorUI extends Applet implements ActionListener {
     private static ArrayList<Film> curListFilms = new ArrayList<Film>();
     static void main() {
         //ОСНОВНОЕ ОКНО
-//        WebLookAndFeel.install ();
         JFrame jFrame = new JFrame("Интерфейс модератора");
         jFrame.setBounds(700, 350, 400, 400);
+
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(menu());
+        jFrame.setJMenuBar(menuBar);
 
         JTabbedPane tabbedPane = new JTabbedPane();
         jFrame.add(tabbedPane);
@@ -50,13 +53,13 @@ public class ModeratorUI extends Applet implements ActionListener {
         new ModeratorUI();
         //ВКЛАДКА "Главная"
         JPanel panelMain = new JPanel(new BorderLayout());
-        tabbedPane.addTab("Главная", panelMain);
-        panelMain.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panelMain.setLayout(new GridLayout(3, 1));
-        JLabel label0 = new JLabel("<html>Вход выполнил: <br>" + curMod.getUserName() + "</html>");
-        panelMain.add(label0);
-        JLabel label1 = new JLabel("Коментарии и рецензии на модерации");
-        panelMain.add(label1);
+//        tabbedPane.addTab("Главная", panelMain);
+//        panelMain.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        panelMain.setLayout(new GridLayout(3, 1));
+//        JLabel label0 = new JLabel("<html>Вход выполнил: <br>" + curMod.getUserName() + "</html>");
+//        panelMain.add(label0);
+//        JLabel label1 = new JLabel("Коментарии и рецензии на модерации");
+//        panelMain.add(label1);
 
 
         //ВКЛАДКА "Кинообъединения"
@@ -77,6 +80,7 @@ public class ModeratorUI extends Applet implements ActionListener {
             public void mousePressed(MouseEvent e) {
 
             }
+
 
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -133,6 +137,29 @@ public class ModeratorUI extends Applet implements ActionListener {
         //----------------//
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
+    }
+    private static JMenu menu()
+    {
+        JMenu file = new JMenu("Файл");
+
+        JMenuItem open = new JMenuItem("");
+        JMenuItem exit = new JMenuItem( new ExitAction());
+        // Добавление к пункту меню изображения
+        exit.setIcon(new ImageIcon("images/exit.png"));
+        // Добавим в меню пункта open
+        file.add(open);
+        // Добавление разделителя
+        file.addSeparator();
+        file.add(exit);
+
+        open.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.out.println ("ActionListener.actionPerformed : open");
+            }
+        });
+        return file;
     }
     // окно добавленя объединения
     private static JFrame jFrame1 = new JFrame();
@@ -1277,6 +1304,16 @@ public class ModeratorUI extends Applet implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(null, "Проверьте поля ввода. \n Все поля обязательны", "Ошибка", JOptionPane.PLAIN_MESSAGE);
             }
+        }
+    }
+
+    private static class ExitAction extends AbstractAction {
+        private static final long serialVersionUID = 1L;
+        ExitAction() {
+            putValue(NAME, "Выход");
+        }
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
         }
     }
 }

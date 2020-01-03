@@ -6,15 +6,14 @@ import Kinopoisk.api.data.User.UserRole;
 import Kinopoisk.client.DataMethods.CinemaAssociation.CinemaAssociations;
 import Kinopoisk.client.DataMethods.User.Cerberus;
 import Kinopoisk.client.connection.ConnectionManager;
-import com.alee.laf.WebLookAndFeel;
 
 import javax.swing.*;
-import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * Графический интерфейс пользователя (объекта класса {@link User}) c ролью ({@link UserRole}) SuperUser
@@ -28,8 +27,8 @@ public class SuperUserUI {
     public static MutableComboBoxModel model;
     public static String NOT_SELECTABLE_OPTION = " - Select an Option - ";
     public static String newName = ""; // это костыль для сохранения имени нового модератора
+    public static ArrayList<User> modsList;
     public static void main() throws Exception {
-//        WebLookAndFeel.initializeManagers ();
         JFrame jFrame = new JFrame("Интерфейс SUPERUSER");
         jFrame.setBounds(150, 150, 450, 320);
 
@@ -55,12 +54,11 @@ public class SuperUserUI {
         tabbedPane.addTab("Модераторы", panel1);
         tabbedPane.addTab("Назначение", panel2);
 
+        modsList = (ArrayList<User>) Cerberus.getInstance().getModerators();
         table.setModel(dataModel);
         table1.setModel(dataModel2);
         table1.getColumnModel().getColumn(0).setWidth(150);
         table.setFillsViewportHeight(true);
-        JScrollPane scroll = new JScrollPane(table);
-
 
         panel1.add(table, BorderLayout.NORTH);
         panel1.add(label, BorderLayout.CENTER);
@@ -112,8 +110,6 @@ public class SuperUserUI {
         panel2.add(buttonSet, BorderLayout.EAST);
 
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        WindowListener winListener = new TestWindowListener();
-        jFrame.addWindowListener(winListener);
         jFrame.setVisible(true);
     }
 
@@ -122,7 +118,6 @@ public class SuperUserUI {
         boolean selectionAllowed = true;
         Object selectedItem = this.getElementAt(0);
 
-
         @Override
         public Object getSelectedItem() {
             return selectedItem;
@@ -130,7 +125,7 @@ public class SuperUserUI {
 
         @Override
         public int getSize() {
-            return Cerberus.getInstance().getModerators().size() + 1;
+            return modsList.size() + 1;
         }
 
         @Override
@@ -151,7 +146,7 @@ public class SuperUserUI {
             if (index == 0)
                 return NOT_SELECTABLE_OPTION;
             else {
-                return Cerberus.getInstance().getModerators().get(index - 1).getUserName();
+                return modsList.get(index - 1).getUserName();
             }
         }
 
@@ -170,7 +165,7 @@ public class SuperUserUI {
     public static AbstractTableModel dataModel = new AbstractTableModel() {
         @Override
         public int getRowCount() {
-            return Cerberus.getInstance().getModerators().size() + 1;
+            return modsList.size() + 1;
         }
 
         @Override
@@ -217,9 +212,9 @@ public class SuperUserUI {
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-            if (rowIndex < Cerberus.getInstance().getModerators().size()) {
-                if (Cerberus.getInstance().getModerators().get(rowIndex) != null) {
-                    User moderator = Cerberus.getInstance().getModerators().get(rowIndex);
+            if (rowIndex < modsList.size()) {
+                if (modsList.get(rowIndex) != null) {
+                    User moderator = modsList.get(rowIndex);
                     switch (columnIndex) {
                         case 0:
                             return moderator.getUserName();
@@ -237,19 +232,18 @@ public class SuperUserUI {
         }
 
         public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-            if (rowIndex < Cerberus.getInstance().getModerators().size()) {
-                User mod = Cerberus.getInstance().getModerators().get(rowIndex);
-                switch (columnIndex) {
-                    case 0:
-                        mod.setUserName("" + aValue);
-                        Cerberus.getInstance().updateModerator(mod);
-                        dataModel.fireTableDataChanged();
-                        break;
+            if (rowIndex < modsList.size()) {
+                User mod = modsList.get(rowIndex);
+                if (columnIndex == 0)
+                if (aValue.toString().compareTo(mod.getUserName()) != 0) {
+                    mod.setUserName("" + aValue);
+                    Cerberus.getInstance().updateModerator(mod);
+                    dataModel.fireTableDataChanged();
                 }
-            } else
-            {
-                newName = "" + aValue;
+
             }
+            else
+                newName = "" + aValue;
         }
     };
 
@@ -308,10 +302,10 @@ public class SuperUserUI {
         public void actionPerformed (ActionEvent e) {
             if (newName != ""){
                 Cerberus.getInstance().addModerator(new User(newName));
-                int index = 0;
-                index = Cerberus.getInstance().getModerators().size() - 1;
+                modsList = (ArrayList<User>) Cerberus.getInstance().getModerators();
+                int index = modsList.size() - 1;
                 String info = null;
-                info = "Name: " + newName + "\n" + Cerberus.getInstance().getModerators().get(index).getInfo();
+                info = "Name: " + newName + "\n" + modsList.get(index).getInfo();
                 JOptionPane.showMessageDialog(null, info, "Добавлен пользователь", JOptionPane.PLAIN_MESSAGE);
                 newName = "";
                 dataModel.fireTableDataChanged();
@@ -326,8 +320,9 @@ public class SuperUserUI {
             int indexCol = table.getSelectedColumn();
             int indexRow = table.getSelectedRow();
             if (indexCol == 0 && indexRow != -1) {
-                User user = Cerberus.getInstance().getModerators().get(indexRow);
+                User user = modsList.get(indexRow);
                 Cerberus.getInstance().removeModerator(user);
+                modsList = (ArrayList<User>) Cerberus.getInstance().getModerators();
                 dataModel.fireTableDataChanged();
             }
             else{
@@ -342,7 +337,7 @@ public class SuperUserUI {
             if (table1.getSelectedRow() != -1 && comboBox.getSelectedIndex() != 0) {
                 CinemaAssociation cinemaAssociation = CinemaAssociations.getInstance().getCinemaAssociations().get(table1.getSelectedRow());
                 User mod = null;
-                mod = Cerberus.getInstance().getModerators().get(comboBox.getSelectedIndex() - 1);
+                mod = modsList.get(comboBox.getSelectedIndex() - 1);
                 cinemaAssociation.setMod(mod);
                 ConnectionManager.getInstance().getDataService().updateAssociation(cinemaAssociation);
                 JOptionPane.showMessageDialog(null, "На кинообъединение " + cinemaAssociation.getName() + " назначен модератор " + mod.getUserName(), "Назначение", JOptionPane.PLAIN_MESSAGE);
@@ -352,42 +347,8 @@ public class SuperUserUI {
         }
     }
 
-    private static class TestWindowListener implements WindowListener {
-
-        @Override
-        public void windowOpened(WindowEvent e) {
-
-        }
-
-        @Override
-        public void windowClosing(WindowEvent e) {
-        }
-
-        @Override
-        public void windowClosed(WindowEvent e) {
-
-        }
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-
-        }
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-
-        }
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-
-        }
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-
-        }
-    }
 }
+
+
 
 

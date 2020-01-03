@@ -14,7 +14,7 @@ import Kinopoisk.client.DataMethods.*;
 import Kinopoisk.client.connection.ConnectionManager;
 
 /**
- * Класс, описывабщий методы по работе с объектами класса {@link CinemaStudio}
+ * Класс, описывающий методы по работе с объектами класса {@link CinemaStudio}
  * @author Narizhny Pavel
  * @version 1.0
  */
