@@ -34,7 +34,8 @@ public class UserRole implements Serializable {
             case 1: return UserRoles.SUPER_USER;
             case 2: return UserRoles.MODERATOR;
             case 3: return UserRoles.USER;
-            default: return UserRoles.MODERATOR;
+            case 4: return UserRoles.IMAGE;
+            default: return UserRoles.USER;
         }
     }
 }

@@ -71,8 +71,8 @@ public class Login {
     }
 
     private static void authorizeViewer(){
-        enterUserName.setText("mod3");
-        enterPassword.setText("mod3");
+        enterUserName.setText("image");
+        enterPassword.setText("image");
     }
 
     public static class ButEvListener implements ActionListener{
@@ -112,6 +112,13 @@ public class Login {
                         case 3:
                             try {
                                 ViewerUI.main();
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                            break;
+                        case 4:
+                            try {
+                                TestFrame.main();
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                             }

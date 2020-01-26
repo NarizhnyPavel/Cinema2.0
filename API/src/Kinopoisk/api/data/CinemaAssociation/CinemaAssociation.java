@@ -2,6 +2,8 @@ package Kinopoisk.api.data.CinemaAssociation;
 
 import Kinopoisk.api.data.User.User;
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Класс, описывающий кинообъединение, группирующее фильмы, и обладает свойствами:
@@ -26,7 +28,15 @@ public class CinemaAssociation implements Serializable {
     /**
      * Конструктор - создание нового объека
      */
-    public CinemaAssociation() {    }
+    public CinemaAssociation(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.type = new TypeAssociation(resultSet.getString ( "type" ));
+            this.name = resultSet.getString ( "name" );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Конструктор - создание нового объека со свойствами

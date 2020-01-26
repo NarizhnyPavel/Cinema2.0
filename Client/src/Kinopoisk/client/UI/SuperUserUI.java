@@ -79,6 +79,7 @@ public class SuperUserUI {
                         comboBox.getModel().setSelectedItem(CinemaAssociations.getInstance().getCinemaAssociations().get(table1.getSelectedRow()).getMod().getUserName());
                         //model.setSelectedItem();
                         comboBox.updateUI();
+
                     }
                 }
             }

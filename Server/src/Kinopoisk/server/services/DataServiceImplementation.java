@@ -208,7 +208,7 @@ public class DataServiceImplementation extends HorseHessianServlet implements Da
         if (list.isEmpty()) {
             return null;
         }
-        return ( User) list.get ( 0 );
+        return (User) list.get ( 0 );
     }
 
     @Override

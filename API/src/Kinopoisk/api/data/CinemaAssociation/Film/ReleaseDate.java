@@ -3,6 +3,8 @@ package Kinopoisk.api.data.CinemaAssociation.Film;
 import org.jetbrains.annotations.Contract;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Класс, описывающий дату выхода фильма со свойствами <b></b> и <b>описание</b>.
@@ -21,7 +23,14 @@ public class ReleaseDate implements Serializable {
      * Конструктор - создание нового объекта
      */
     @Contract(pure = true)
-    public ReleaseDate() {
+    public ReleaseDate(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.world = resultSet.getString("world");
+            this.rus = resultSet.getString("rus");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

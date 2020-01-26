@@ -2,6 +2,7 @@ package Kinopoisk.client.connection;
 
 import Kinopoisk.api.services.AuthenticationService;
 import Kinopoisk.api.services.DataService;
+import Kinopoisk.api.services.ImagesDownloader;
 import Kinopoisk.api.services.Ping;
 import com.caucho.hessian.client.*;
 import com.caucho.hessian.io.HessianRemoteObject;
@@ -22,6 +23,7 @@ import java.net.URL;
 public class ConnectionManager {
     private static ConnectionManager instance;
     private AuthenticationService authService;
+    private ImagesDownloader imagesDownloader;
     private DataService dataService;
     private static Ping ping;
     private static String url = "http://localhost:8085";
@@ -80,6 +82,7 @@ public class ConnectionManager {
         try {
             authService = (AuthenticationService) factory.create(AuthenticationService.class, url + "/AuthenticationService");
             dataService = (DataService) factory.create(DataService.class, url + "/DataService");
+            imagesDownloader = (ImagesDownloader) factory.create(ImagesDownloader.class, url + "/ImagesDownloader/");
             ping = (Ping) factory.create(Ping.class, url + "/Ping");
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -102,8 +105,9 @@ public class ConnectionManager {
 
     public DataService getDataService() {
             return dataService;
-
     }
+
+    public ImagesDownloader getImagesDownloader() {return imagesDownloader;}
 
     public void setSeanceId(final String newSeanceId) {
         this.seanceId = newSeanceId;

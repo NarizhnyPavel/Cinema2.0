@@ -1,6 +1,8 @@
 package Kinopoisk.api.data.Country;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Класс, описывающий страну
@@ -14,7 +16,13 @@ public class Country implements Serializable {
     private String name;
 
 
-    public Country() {
+    public Country(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.name = resultSet.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Country(int id, String name) {

@@ -1,6 +1,8 @@
 package Kinopoisk.api.data.User;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -22,7 +24,16 @@ public class User implements Serializable {
     /** пароль*/
     protected String password;
 
-    public User() {
+    public User(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.userName = resultSet.getString("userName");
+            this.role = new UserRole().getUserRole(resultSet.getInt("role"));
+            this.lastSession = resultSet.getLong("lastSession");
+            this.password = resultSet.getString ( "password" );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public User(String userName, String password) {
@@ -35,6 +46,14 @@ public class User implements Serializable {
         this.userName = name;
         this.setRandomPassword();
         this.updateSession();
+    }
+
+    public User(User user) {
+        this.id = user.id;
+        this.userName = user.userName;
+        this.role = user.role;
+        this.lastSession = user.lastSession;
+        this.password = user.password;
     }
 
     public String getUserName() {

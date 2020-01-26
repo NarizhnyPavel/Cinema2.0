@@ -3,6 +3,9 @@ package Kinopoisk.api.data.CinemaAssociation.Film;
 import org.jetbrains.annotations.Contract;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 /**
  * Класс, описывающий возрастное ограничение фильма со свойствами <b>рекомендуемый возраст для просмотра</b> и <b>описание</b>.
@@ -21,7 +24,14 @@ public class AgeLimit implements Serializable {
      * Конструктор - создание нового объека
      */
     @Contract(pure = true)
-    public AgeLimit() {
+    public AgeLimit(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.id = resultSet.getInt("limit");
+            this.discript = resultSet.getString("discript");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

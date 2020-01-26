@@ -1,6 +1,8 @@
 package Kinopoisk.api.data.CinemaAssociation.Film;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Класс, описывающий жанр фильма со свойством <b>имя</b>.
@@ -17,7 +19,14 @@ public class Genre implements Serializable {
     /**
      * Конмтруктор - создание нового объекта
      */
-    public Genre() { }
+    public Genre(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.name = resultSet.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Конмтруктор - создание нового объекта c определённым значениями

@@ -95,28 +95,15 @@ public class DatabaseManager
     {
         if ( clazz.equals ( User.class ) )
         {
-            final User user = new User(resultSet.getLong( "id" ), resultSet.getString ( "userName" ), new UserRole().getUserRole(resultSet.getInt("role")), resultSet.getString ( "password" ), resultSet.getLong("lastSession") );
-            if (user.getLastSessionLong() == 0) {
-                user.updateSession();
-                try {
-                    DatabaseManager.getInstance().execute(
-                            "update \"user\" set " +
-                                    " \"lastSession\" = " + user.getLastSessionLong() + "" +
-                                    " WHERE id = " + user.getId() + "");
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            final User user = new User(resultSet);
+            checkLastSession(user);
             return user;
         }
 
         if ( clazz.equals (CinemaAssociation.class) )
         {
-            final CinemaAssociation association = new CinemaAssociation (  );
-            association.setId(resultSet.getInt("id"));
-            association.setName(resultSet.getString ( "name" ));
-            association.setType(new TypeAssociation().getType(resultSet.getInt ( "type" )));
-            association.setMod((User) DatabaseManager.getInstance().get("select * from \"user\" where id=" + resultSet.getInt("moderator") + ";", User.class).get(0));
+            final CinemaAssociation association = new CinemaAssociation ( resultSet);
+            setAssociationModerator(resultSet, association);
             //association.setClub((FunClub) DatabaseManager.getInstance().get("select * from \"funclubs\" where id=" + resultSet.getInt("funClub") + ";", FunClub.class).get(0));
 
             return association;
@@ -124,9 +111,7 @@ public class DatabaseManager
 
         if (clazz.equals(TypeAssociation.class))
         {
-            final TypeAssociation typeAssociation = new TypeAssociation();
-            typeAssociation.setType(resultSet.getString("name"));
-
+            final TypeAssociation typeAssociation = new TypeAssociation(resultSet);
             return typeAssociation;
         }
 
@@ -140,7 +125,7 @@ public class DatabaseManager
             film.setPoster(resultSet.getString("poster"));
             film.setGenre((Genre) get("select * from \"genres\" where id=" + resultSet.getInt("genre") + ";", Genre.class).get(0));
             film.setAgeLim((AgeLimit) get("select * from \"AgeLimits\" where id=" + resultSet.getInt("ageLimit") + ";", AgeLimit.class).get(0));
-            film.setReleaseDate((ReleaseDate) get("SELECT * FROM releasedates WHERE id = " + resultSet.getInt("releaseDate") + ";", ReleaseDate.class).get(0));
+            film.setReleaseDate((ReleaseDate) get("SELECT * FROM releaseDates WHERE id = " + resultSet.getInt("releaseDate") + ";", ReleaseDate.class).get(0));
             film.setDir((Person) get("SELECT * FROM persons WHERE id = " + resultSet.getInt("director") + ";", Person.class).get(0));
             film.setWriter((Person) get("SELECT * FROM persons WHERE id = " + resultSet.getInt("writer") + ";", Person.class).get(0));
             film.setStudio((CinemaStudio) get("SELECT * FROM studios WHERE id = " + resultSet.getInt("cinemaStudio") + ";", CinemaStudio.class).get(0));
@@ -148,32 +133,22 @@ public class DatabaseManager
         }
 
         if (clazz.equals(AgeLimit.class)){
-            final AgeLimit ageLimit = new AgeLimit();
-            ageLimit.setId(resultSet.getInt("id"));
-            ageLimit.setLimit(resultSet.getInt("limit"));
-            ageLimit.setDiscript(resultSet.getString("discript"));
+            final AgeLimit ageLimit = new AgeLimit(resultSet);
             return ageLimit;
         }
 
         if(clazz.equals(ReleaseDate.class)){
-            final ReleaseDate releaseDate = new ReleaseDate();
-            releaseDate.setId(resultSet.getInt("id"));
-            releaseDate.setWorld(resultSet.getString("world"));
-            releaseDate.setRus(resultSet.getString("rus"));
+            final ReleaseDate releaseDate = new ReleaseDate(resultSet);
             return releaseDate;
         }
 
         if (clazz.equals(Genre.class)){
-            final Genre genre = new Genre();
-            genre.setId(resultSet.getInt("id"));
-            genre.setDiscript(resultSet.getString("name"));
+            final Genre genre = new Genre(resultSet);
             return genre;
         }
 
         if (clazz.equals(Profession.class)){
-            final Profession profession = new Profession();
-            profession.setId(resultSet.getInt("id"));
-            profession.setName(resultSet.getString("name"));
+            final Profession profession = new Profession(resultSet);
             return profession;
         }
 
@@ -191,10 +166,7 @@ public class DatabaseManager
         }
 
         if (clazz.equals(Country.class)) {
-            final Country country = new Country();
-            country.setId(resultSet.getInt("id"));
-            country.setName(resultSet.getString("name"));
-
+            final Country country = new Country(resultSet);
             return country;
         }
 
@@ -208,5 +180,23 @@ public class DatabaseManager
             return studio;
         }
         return null;
+    }
+
+    private void setAssociationModerator(ResultSet resultSet, CinemaAssociation association) throws SQLException {
+        association.setMod((User) DatabaseManager.getInstance().get("select * from \"user\" where id=" + resultSet.getInt("moderator") + ";", User.class).get(0));
+    }
+
+    private void checkLastSession(User user) {
+        if (user.getLastSessionLong() == 0) {
+            user.updateSession();
+            try {
+                DatabaseManager.getInstance().execute(
+                        "update \"user\" set " +
+                                " \"lastSession\" = " + user.getLastSessionLong() + "" +
+                                " WHERE id = " + user.getId() + "");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

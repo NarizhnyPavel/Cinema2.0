@@ -1,6 +1,8 @@
 package Kinopoisk.api.data.Person;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Класс, описывающий профессию для {@link Person}
@@ -18,7 +20,13 @@ public class Profession implements Serializable {
         this.name = name;
     }
 
-    public Profession() {
+    public Profession(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            this.name = resultSet.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getId() {

@@ -30,6 +30,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ImagesDownloader</servlet-name>
+        <servlet-class>Kinopoisk.server.services.ImagesDownloaderImplementation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImagesDownloader</servlet-name>
+        <url-pattern>/ImagesDownloader</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AuthenticationService</servlet-name>
         <servlet-class>Kinopoisk.server.services.AuthenticationServiceImplementation</servlet-class>
     </servlet>

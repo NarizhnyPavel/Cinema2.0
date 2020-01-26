@@ -1,6 +1,8 @@
 package Kinopoisk.api.data.CinemaAssociation;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Класс, описывающий тип кинообъединения <br>
@@ -16,7 +18,12 @@ public class TypeAssociation implements Serializable {
     /**
      * Конструктор - создание нового объекта
      */
-    public TypeAssociation() {
+    public TypeAssociation(ResultSet resultSet) {
+        try {
+            this.type = resultSet.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
