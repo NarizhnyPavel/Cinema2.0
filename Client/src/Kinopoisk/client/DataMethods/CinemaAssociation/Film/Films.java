@@ -10,7 +10,12 @@ import Kinopoisk.api.data.Country.Country;
 import Kinopoisk.api.data.Person.Person;
 import Kinopoisk.client.connection.ConnectionManager;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +51,10 @@ public class Films implements Serializable {
         ConnectionManager.getInstance().getDataService().createFilm(new Film(cinemaAss, name, releaseDate, dir, writer, country, studio, ageLimit, genre));
     }
 
+    public void addFilm(Film film){
+        ConnectionManager.getInstance().getDataService().createFilm(film);
+    }
+
     public void updateFilm(Film film){
         ConnectionManager.getInstance().getDataService().updateFilm(film);
     }
@@ -59,4 +68,32 @@ public class Films implements Serializable {
             }
         }
     }
+
+    public Image getPosterImageOf(Film film) {
+        byte[] img = ConnectionManager.getInstance().getImagesDownloader().loadImage(film.getPoster());
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(img));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return resize(bufferedImage, 400, 250);
+    }
+
+    public String getPosterURLOf(Film film){
+        return film.getPoster();
+    }
+
+    public static BufferedImage resize(BufferedImage img, int newW, int newH) {
+        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = dimg.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return dimg;
+    }
+
 }

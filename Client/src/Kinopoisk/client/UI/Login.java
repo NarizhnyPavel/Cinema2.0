@@ -71,8 +71,8 @@ public class Login {
     }
 
     private static void authorizeViewer(){
-        enterUserName.setText("test");
-        enterPassword.setText("test");
+        enterUserName.setText("mod3");
+        enterPassword.setText("mod3");
     }
 
     public static class ButEvListener implements ActionListener{

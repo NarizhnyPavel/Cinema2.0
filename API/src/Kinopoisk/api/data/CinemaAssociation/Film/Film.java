@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Connection;
 
 /**
  * Класс, описывающий фильм
@@ -48,7 +49,7 @@ public class Film implements Serializable {
     /** Поле ссылки на трейлер */
     private String trailer; //here will be link on website
     /** Поле ссылки на постер */
-    private byte[] poster;
+    private String poster;
     /** Поле продолжительности фильма */
     private long duration;
     /** Поле количества серий. Применяется в случае описания сезона сериала */
@@ -120,33 +121,16 @@ public class Film implements Serializable {
         this.genre = genre;
     }
 
-    public Image getPoster() {
-        BufferedImage bufferedImage = null;
-        try {
-            bufferedImage = ImageIO.read(new ByteArrayInputStream(poster));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return resize(bufferedImage, 400, 250);
+    public String getPoster() {
+        return poster;
     }
 
-    public static BufferedImage resize(BufferedImage img, int newW, int newH) {
-        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
-        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g2d = dimg.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
-        g2d.dispose();
-
-        return dimg;
-    }
 
     /**
      * Процедура определения поля {@link Film#poster}
      * @param poster - ссылка на постер
      */
-    public void setPoster(byte[] poster) {
+    public void setPoster(String poster) {
         this.poster = poster;
     }
 

@@ -13,7 +13,6 @@ import Kinopoisk.client.DataMethods.Countries;
 import Kinopoisk.client.DataMethods.Person.Persons;
 import Kinopoisk.client.DataMethods.User.Cerberus;
 import Kinopoisk.client.connection.ConnectionManager;
-import com.alee.laf.WebLookAndFeel;
 
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
@@ -36,8 +35,8 @@ public class ModeratorUI extends Applet implements ActionListener {
     private final static boolean shouldWeightX = true;
     private final static boolean RIGHT_TO_LEFT = false;
     private static User curMod = Cerberus.getInstance().getCurrUser();
-    private static ArrayList<CinemaAssociation> listAssos = new ArrayList<CinemaAssociation>();
-    private static ArrayList<Film> curListFilms = new ArrayList<Film>();
+    private static ArrayList<CinemaAssociation> listAssos = new ArrayList<>();
+    private static ArrayList<Film> curListFilms = new ArrayList<>();
     static void main() {
         //ОСНОВНОЕ ОКНО
         JFrame jFrame = new JFrame("Интерфейс модератора");
@@ -52,8 +51,7 @@ public class ModeratorUI extends Applet implements ActionListener {
 
         new ModeratorUI();
         //ВКЛАДКА "Главная"
-        JPanel panelMain = new JPanel(new BorderLayout());
-//        tabbedPane.addTab("Главная", panelMain);
+        //        tabbedPane.addTab("Главная", panelMain);
 //        panelMain.setAlignmentX(Component.CENTER_ALIGNMENT);
 //        panelMain.setLayout(new GridLayout(3, 1));
 //        JLabel label0 = new JLabel("<html>Вход выполнил: <br>" + curMod.getUserName() + "</html>");
@@ -152,13 +150,7 @@ public class ModeratorUI extends Applet implements ActionListener {
         file.addSeparator();
         file.add(exit);
 
-        open.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.out.println ("ActionListener.actionPerformed : open");
-            }
-        });
+        open.addActionListener(arg0 -> System.out.println ("ActionListener.actionPerformed : open"));
         return file;
     }
     // окно добавленя объединения
@@ -194,6 +186,7 @@ public class ModeratorUI extends Applet implements ActionListener {
         comboBox2.setSelectedIndex(0);
         comboBox3.setSelectedIndex(0);
         country.setText("");
+        poster.setText("");
         comboBox4.setSelectedIndex(0);
         if (!mode){
             jFrame2.setTitle("Редактирование фильма");
@@ -204,6 +197,7 @@ public class ModeratorUI extends Applet implements ActionListener {
             comboBox2.setSelectedIndex(Persons.getInstance().getDirectorIndex(film.getDir())+1);
             comboBox3.setSelectedIndex(Persons.getInstance().getWriterIndex(film.getWriter())+1);
             country.setText(film.getCountry().getName());
+            poster.setText(film.getPoster());
             comboBox4.setSelectedIndex(CinemaStudios.getInstance().getStudioIndex(film.getStudio()) + 1);
             comboBox5.setSelectedIndex(Genres.getInstance().getGenreIndex(film.getGenre()) + 1);
             comboBox6.setSelectedIndex(AgeLimits.getInstance().getAgeLimitIndex(film.getAgeLim()) + 1);
@@ -242,23 +236,8 @@ public class ModeratorUI extends Applet implements ActionListener {
 
     public static boolean profession;
     private static void addComponentsToPane4(Container pane, boolean mode) {
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
-
-        pane.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        if (shouldFill) {
-            // натуральная высота, максимальная ширина
-            c.fill = GridBagConstraints.HORIZONTAL;
-        }
-
-        if (shouldWeightX) {
-            c.weightx = 0.5;
-        }
-
         JLabel label1;
+        GridBagConstraints c = setComponentOrientation(pane);
 
         if (mode)
             label1 = new JLabel("Добавление режиссёра");
@@ -311,7 +290,8 @@ public class ModeratorUI extends Applet implements ActionListener {
         pane.add(save1, c);
 
     }
-    private static void addComponentsToPane5(Container pane) {
+
+    private static GridBagConstraints setComponentOrientation(Container pane) {
         if (RIGHT_TO_LEFT) {
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         }
@@ -328,7 +308,12 @@ public class ModeratorUI extends Applet implements ActionListener {
             c.weightx = 0.5;
         }
 
+        return c;
+    }
+
+    private static void addComponentsToPane5(Container pane) {
         JLabel label1;
+        GridBagConstraints c = setComponentOrientation(pane);
 
         label1 = new JLabel("Добавление киностудии");
 
@@ -380,24 +365,8 @@ public class ModeratorUI extends Applet implements ActionListener {
 
     // cinemaAssociations
     public static void addComponentsToPane(Container pane) {
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.HORIZONTAL;
-
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
-
-
-        if (shouldFill) {
-            // натуральная высота, максимальная ширина
-            c.fill = GridBagConstraints.HORIZONTAL;
-        }
-        if (shouldWeightX) {
-            c.weightx = 0.5;
-        }
-        pane.setLayout(new GridBagLayout());
+        GridBagConstraints c = setComponentOrientation(pane);
 //        pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
 
         JLabel label2 = new JLabel("Курируемые кинообъединения");
         label2.setFont(new Font("Serif", Font.BOLD, 20));
@@ -442,12 +411,8 @@ public class ModeratorUI extends Applet implements ActionListener {
     public static JTextField name2 = new JTextField(20);
     public static JComboBox comboBox = new JComboBox();
     public static void addComponentsToPane1(Container pane, boolean mode) {
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
 
-        pane.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c = setComponentOrientation(pane);
 
         if (shouldFill) {
             // натуральная высота, максимальная ширина
@@ -691,6 +656,7 @@ public class ModeratorUI extends Applet implements ActionListener {
     public static JTextField country = new JTextField(20);
     public static JTextField country1 = new JTextField(20);
     public static JTextField country2 = new JTextField(20);
+    public static JTextField poster = new JTextField(50);
     public static JComboBox comboBox2 = new JComboBox(); // режиссёр
     public static JComboBox comboBox3 = new JComboBox(); // сценарист
     public static JComboBox comboBox4 = new JComboBox(); // киностудия
@@ -701,23 +667,11 @@ public class ModeratorUI extends Applet implements ActionListener {
     public static Vector<Person> people2;
     public static Vector<CinemaStudio> studios;
     public static void addComponentsToPane3(Container pane, boolean mode) { // 1- добавление 2- редактирование
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
 
-        pane.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c = setComponentOrientation(pane);
 
-        if (shouldFill) {
-            // натуральная высота, максимальная ширина
-            c.fill = GridBagConstraints.HORIZONTAL;
-        }
 
-        if (shouldWeightX) {
-            c.weightx = 0.5;
-        }
-
-        //JLabel label0 = new JLabel("Создание фильма: ");
+        JLabel label0 = new JLabel("Постер");
         JLabel label1 = new JLabel("Название");
         JLabel label2 = new JLabel("Дата выхода");
         JLabel label3 = new JLabel("в Мире");
@@ -883,9 +837,11 @@ public class ModeratorUI extends Applet implements ActionListener {
 
         c.gridheight = 1;
         c.gridwidth = 2;
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridy = 0;
-        //pane.add(label0, c);
+        pane.add(label0, c);
+        c.gridx = 2;
+        pane.add(poster, c);
 
         c.gridx = 0;
         c.gridy = 1;
@@ -928,6 +884,7 @@ public class ModeratorUI extends Applet implements ActionListener {
         c.gridx = 2;
         pane.add(comboBox3, c);
         c.gridx = 4;
+        addWrit.setPreferredSize(new Dimension(15, 15));
         pane.add(addWrit, c);
 
         c.gridx = 0;
@@ -942,6 +899,7 @@ public class ModeratorUI extends Applet implements ActionListener {
         c.gridx = 2;
         pane.add(comboBox4, c);
         c.gridx = 4;
+        addStudio.setPreferredSize(new Dimension(15, 15));
         pane.add(addStudio, c);
 
         c.gridx = 0;
@@ -1155,7 +1113,7 @@ public class ModeratorUI extends Applet implements ActionListener {
                     comboBox2.getSelectedIndex() != -1 && comboBox3.getSelectedIndex() != -1 &&
                     !country.toString().isEmpty() &&  comboBox4.getSelectedIndex() != -1 &&
                     comboBox5.getSelectedIndex() != -1 && comboBox6.getSelectedIndex() != -1) {
-                Films.getInstance().addFilm(listAssos.get(comboBox1.getSelectedIndex() - 1),
+                Film film = new Film (listAssos.get(comboBox1.getSelectedIndex() - 1),
                         name.getText(),
                         ReleaseDates.getInstance().addReleaseDate(date1.getText(), date2.getText()),
                         Persons.getInstance().getDirectors().get(comboBox2.getSelectedIndex() - 1),
@@ -1163,8 +1121,9 @@ public class ModeratorUI extends Applet implements ActionListener {
                         Countries.getInstance().getCountry(country.getText()),
                         CinemaStudios.getInstance().getCinemaStudio(comboBox4.getSelectedIndex()),
                         AgeLimits.getInstance().getAgeLimit(comboBox6.getSelectedIndex()),
-                        Genres.getInstance().getGenre(comboBox5.getSelectedIndex())
-                );
+                        Genres.getInstance().getGenre(comboBox5.getSelectedIndex()));
+                film.setPoster(poster.getText());
+                Films.getInstance().addFilm(film);
                 updateFilms();
                 jFrame2.setVisible(false);
             }
@@ -1192,6 +1151,7 @@ public class ModeratorUI extends Applet implements ActionListener {
                 film.setWriter(Persons.getInstance().getWriters().get(comboBox3.getSelectedIndex() - 1));
                 film.setStudio(CinemaStudios.getInstance().getCinemaStudio(comboBox4.getSelectedIndex()));
                 film.setCountry(Countries.getInstance().getCountry(country.getText()));
+                film.setPoster(poster.getText());
                 film.setAgeLim(AgeLimits.getInstance().getAgeLimit(comboBox6.getSelectedIndex()));
                 film.setGenre(Genres.getInstance().getGenre(comboBox5.getSelectedIndex()));
                 Films.getInstance().updateFilm(film);

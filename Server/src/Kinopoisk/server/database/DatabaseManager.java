@@ -125,7 +125,7 @@ public class DatabaseManager
             film.setCinemaAss((CinemaAssociation)get("SELECT * FROM \"CinemaAssociations\" WHERE id =" + resultSet.getInt("cinemaAss") + ";", CinemaAssociation.class).get(0));
             film.setCountry((Country) get("select * from countries where id=" + resultSet.getInt("country") + ";", Country.class).get(0));
             film.setName(resultSet.getString("name"));
-            setFilmPoster(resultSet, film);
+            film.setPoster(resultSet.getString("poster"));
             film.setGenre((Genre) get("select * from \"genres\" where id=" + resultSet.getInt("genre") + ";", Genre.class).get(0));
             film.setAgeLim((AgeLimit) get("select * from \"AgeLimits\" where id=" + resultSet.getInt("ageLimit") + ";", AgeLimit.class).get(0));
             film.setReleaseDate((ReleaseDate) get("SELECT * FROM \"releaseDates\" WHERE id = " + resultSet.getInt("releaseDate") + ";", ReleaseDate.class).get(0));
@@ -183,11 +183,6 @@ public class DatabaseManager
             return studio;
         }
         return null;
-    }
-
-    private void setFilmPoster(ResultSet resultSet, Film film) throws SQLException {
-        byte[] image = new ImagesDownloaderImplementation().loadImage(resultSet.getString("poster"));
-        film.setPoster(image);
     }
 
     private void setAssociationModerator(ResultSet resultSet, CinemaAssociation association) throws SQLException {
