@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 public interface AuthenticationService
 {
-    String login(String login, String password) throws SQLException;
+    String login(String login, char[] password) throws SQLException;
 
     void logout(String seanceId);
 }

@@ -10,7 +10,9 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -37,8 +39,14 @@ public class TestFrame extends JFrame {
         button.setFont(new Font("Verdana", Font.PLAIN, 12));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Image img = loadImage();
-                label.setIcon(new ImageIcon(img, "Google logo"));
+                byte[] img = loadImage();
+                BufferedImage bufferedImage = null;
+                try {
+                    bufferedImage = ImageIO.read(new ByteArrayInputStream(img));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                label.setIcon(new ImageIcon(bufferedImage, "Google logo"));
             }
         });
         frame.getContentPane().add(button, BorderLayout.SOUTH);
@@ -49,9 +57,9 @@ public class TestFrame extends JFrame {
         frame.setVisible(true);
     }
 
-    private static Image loadImage() {
-        ConnectionManager.getInstance().getImagesDownloader().loadImage(URL);
-        return null;
+    private static byte[] loadImage() {
+        return ConnectionManager.getInstance().getImagesDownloader().loadImage(URL);
+//        return null;
     }
 
     public static void main() {

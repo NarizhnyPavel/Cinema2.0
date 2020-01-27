@@ -13,10 +13,13 @@ import Kinopoisk.api.data.Person.Profession;
 import Kinopoisk.api.data.User.User;
 import Kinopoisk.api.data.User.UserRole;
 import Kinopoisk.api.services.DataService;
+import Kinopoisk.api.services.ImagesDownloader;
 import Kinopoisk.server.services.DataServiceImplementation;
+import Kinopoisk.server.services.ImagesDownloaderImplementation;
 import org.postgresql.Driver;
 
 import javax.xml.crypto.dsig.Reference;
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,10 +125,10 @@ public class DatabaseManager
             film.setCinemaAss((CinemaAssociation)get("SELECT * FROM \"CinemaAssociations\" WHERE id =" + resultSet.getInt("cinemaAss") + ";", CinemaAssociation.class).get(0));
             film.setCountry((Country) get("select * from countries where id=" + resultSet.getInt("country") + ";", Country.class).get(0));
             film.setName(resultSet.getString("name"));
-            film.setPoster(resultSet.getString("poster"));
+            setFilmPoster(resultSet, film);
             film.setGenre((Genre) get("select * from \"genres\" where id=" + resultSet.getInt("genre") + ";", Genre.class).get(0));
             film.setAgeLim((AgeLimit) get("select * from \"AgeLimits\" where id=" + resultSet.getInt("ageLimit") + ";", AgeLimit.class).get(0));
-            film.setReleaseDate((ReleaseDate) get("SELECT * FROM releaseDates WHERE id = " + resultSet.getInt("releaseDate") + ";", ReleaseDate.class).get(0));
+            film.setReleaseDate((ReleaseDate) get("SELECT * FROM \"releaseDates\" WHERE id = " + resultSet.getInt("releaseDate") + ";", ReleaseDate.class).get(0));
             film.setDir((Person) get("SELECT * FROM persons WHERE id = " + resultSet.getInt("director") + ";", Person.class).get(0));
             film.setWriter((Person) get("SELECT * FROM persons WHERE id = " + resultSet.getInt("writer") + ";", Person.class).get(0));
             film.setStudio((CinemaStudio) get("SELECT * FROM studios WHERE id = " + resultSet.getInt("cinemaStudio") + ";", CinemaStudio.class).get(0));
@@ -180,6 +183,11 @@ public class DatabaseManager
             return studio;
         }
         return null;
+    }
+
+    private void setFilmPoster(ResultSet resultSet, Film film) throws SQLException {
+        byte[] image = new ImagesDownloaderImplementation().loadImage(resultSet.getString("poster"));
+        film.setPoster(image);
     }
 
     private void setAssociationModerator(ResultSet resultSet, CinemaAssociation association) throws SQLException {

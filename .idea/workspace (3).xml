@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="artifact" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7ab1cfb0-6ed7-44f6-bb6f-7414c0180c42" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Cinema2.0" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Narizhny Pavel\YandexDisk\ДОКУМЕНТЫ\УНИВЕР\5 семестр\Java\Cinema2.0" />
+        <option value="C:\Users\Narizhny Pavel\YandexDisk\ДОКУМЕНТЫ\УНИВЕР\5 семестр\Java\Cinema2.0\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="1TRFxOkd6Fn75sgeTT4qXyLLygb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573392153657" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.17325228" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="OPEN_URL_DIALOG">
+      <recent name="https://github.com/narizhypavel145/Cinema2.0.git" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Narizhny Pavel\YandexDisk\ДОКУМЕНТЫ\УНИВЕР\5 семестр\Java\Cinema2.0\API\src" />
+      <recent name="C:\Users\Narizhny Pavel\YandexDisk\ДОКУМЕНТЫ\УНИВЕР\5 семестр\Java\Cinema2.0\API\src\com\alee\horses\api\data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Login">
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Kinopoisk.client.UI.Login" />
+      <module name="Client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Kinopoisk.client.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Kinopoisk.client.UI.TestFrame" />
+      <module name="Client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Kinopoisk.client.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.27" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="artifact">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Cinema2_0" />
+        <option name="HTTP_PORT" value="8085" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49824" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="artifact" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Login" />
+      <item itemvalue="Tomcat Server.Server" />
+      <item itemvalue="Application.TestFrame" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.TestFrame" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.11369789" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7ab1cfb0-6ed7-44f6-bb6f-7414c0180c42" name="Default Changelist" comment="" />
+      <created>1572789688256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572789688256</updated>
+      <workItem from="1572789695019" duration="13506000" />
+      <workItem from="1573071571995" duration="9109000" />
+      <workItem from="1573156531562" duration="3678000" />
+      <workItem from="1573241676873" duration="33171000" />
+      <workItem from="1573414300817" duration="300000" />
+      <workItem from="1573415265224" duration="34528000" />
+      <workItem from="1573753361325" duration="1203000" />
+      <workItem from="1573765286574" duration="16214000" />
+      <workItem from="1573845162344" duration="588000" />
+      <workItem from="1573856074653" duration="2004000" />
+      <workItem from="1573858131326" duration="1526000" />
+      <workItem from="1573891749075" duration="796000" />
+      <workItem from="1573892654522" duration="496000" />
+      <workItem from="1573893482318" duration="11156000" />
+      <workItem from="1574020861169" duration="1453000" />
+      <workItem from="1574074628763" duration="6747000" />
+      <workItem from="1574179614435" duration="3395000" />
+      <workItem from="1574240999405" duration="35465000" />
+      <workItem from="1574362316032" duration="3063000" />
+      <workItem from="1574500673335" duration="11935000" />
+      <workItem from="1574701631923" duration="1762000" />
+      <workItem from="1575103361994" duration="7931000" />
+      <workItem from="1575135752890" duration="990000" />
+      <workItem from="1575141107518" duration="1474000" />
+      <workItem from="1575143204784" duration="604000" />
+      <workItem from="1575358554212" duration="32691000" />
+      <workItem from="1576167818142" duration="17370000" />
+      <workItem from="1576588576926" duration="293000" />
+      <workItem from="1576668291206" duration="623000" />
+      <workItem from="1576670551668" duration="898000" />
+      <workItem from="1577574642882" duration="130000" />
+      <workItem from="1577701940602" duration="710000" />
+      <workItem from="1577710098016" duration="624000" />
+      <workItem from="1578054978051" duration="1404000" />
+      <workItem from="1578264072355" duration="1891000" />
+      <workItem from="1578484450874" duration="1335000" />
+      <workItem from="1578654156245" duration="595000" />
+      <workItem from="1578696911338" duration="251000" />
+      <workItem from="1578954606367" duration="1221000" />
+      <workItem from="1579121500880" duration="1084000" />
+      <workItem from="1580054202601" duration="7695000" />
+    </task>
+    <task id="LOCAL-00001" summary="new commit">
+      <created>1574503844455</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574503844456</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new commit">
+      <created>1574590355109</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574590355109</updated>
+    </task>
+    <task id="LOCAL-00003" summary="verson with javaDOC comments and removed extra data classes">
+      <created>1576098193491</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576098193491</updated>
+    </task>
+    <task id="LOCAL-00004" summary="verson with javaDOC comments and removed extra data classes">
+      <created>1578057155669</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578057155669</updated>
+    </task>
+    <task id="LOCAL-00005" summary="get started with ImagesDownloader">
+      <created>1580076896878</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580076896878</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="new commit" />
+    <MESSAGE value="verson with javaDOC comments and removed extra data classes" />
+    <MESSAGE value="get started with ImagesDownloader" />
+    <option name="LAST_COMMIT_MESSAGE" value="get started with ImagesDownloader" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1580058507666">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="765" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1580058507666" />
+    <state x="756" y="383" width="407" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1580058719178">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="756" y="383" width="407" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1050@0.0.1920.1050" timestamp="1580058719178" />
+    <state x="467" y="119" key="CommitChangelistDialog2" timestamp="1580076893399">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="467" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1580076893399" />
+    <state width="452" height="466" key="DebuggerActiveHint" timestamp="1580075212212">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="452" height="466" key="DebuggerActiveHint/0.0.1920.1050@0.0.1920.1050" timestamp="1580075212212" />
+    <state width="1876" height="258" key="GridCell.Tab.0.bottom" timestamp="1580075286025">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1580075286025" />
+    <state width="1876" height="258" key="GridCell.Tab.0.center" timestamp="1580075286025">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1580075286025" />
+    <state width="1876" height="258" key="GridCell.Tab.0.left" timestamp="1580075286024">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1580075286024" />
+    <state width="1876" height="258" key="GridCell.Tab.0.right" timestamp="1580075286025">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1580075286025" />
+    <state width="1876" height="258" key="GridCell.Tab.1.bottom" timestamp="1580075309984">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1580075309984" />
+    <state width="1876" height="258" key="GridCell.Tab.1.center" timestamp="1580075309982">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1580075309982" />
+    <state width="1876" height="258" key="GridCell.Tab.1.left" timestamp="1580075309981">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1580075309981" />
+    <state width="1876" height="258" key="GridCell.Tab.1.right" timestamp="1580075309983">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1876" height="258" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1580075309983" />
+    <state width="1636" height="272" key="GridCell.Tab.2.bottom" timestamp="1580075111682">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111682" />
+    <state width="1636" height="272" key="GridCell.Tab.2.center" timestamp="1580075111682">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111682" />
+    <state width="1636" height="272" key="GridCell.Tab.2.left" timestamp="1580075111681">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111681" />
+    <state width="1636" height="272" key="GridCell.Tab.2.right" timestamp="1580075111682">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111682" />
+    <state width="1636" height="272" key="GridCell.Tab.3.bottom" timestamp="1580075111683">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111683" />
+    <state width="1636" height="272" key="GridCell.Tab.3.center" timestamp="1580075111683">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111683" />
+    <state width="1636" height="272" key="GridCell.Tab.3.left" timestamp="1580075111683">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111683" />
+    <state width="1636" height="272" key="GridCell.Tab.3.right" timestamp="1580075111683">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1636" height="272" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1580075111683" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1580076911992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1580076911992" />
+    <state x="92" y="92" width="1736" height="866" key="dock-window-1" timestamp="1580059669914">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1580059669914" />
+    <state x="92" y="92" width="1736" height="866" key="dock-window-2" timestamp="1580060432065">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="dock-window-2/0.0.1920.1050@0.0.1920.1050" timestamp="1580060432065" />
+    <state x="690" y="279" key="extract.method.dialog" timestamp="1580056327223">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="279" key="extract.method.dialog/0.0.1920.1050@0.0.1920.1050" timestamp="1580056327223" />
+    <state x="616" y="237" key="run.anything.popup" timestamp="1580054562727">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="237" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1580054562727" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Client/src/Kinopoisk/client/DataMethods/Countries.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Server/src/Kinopoisk/server/services/DataServiceImplementation.java</url>
+          <line>433</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/API/lib/hessian-4.0.38.jar!/com/caucho/hessian/client/HessianProxy.class</url>
+          <line>155</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Server/src/Kinopoisk/server/services/AuthenticationServiceImplementation.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Client/src/Kinopoisk/client/UI/TestFrame.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/API/src/Kinopoisk/api/data/User/UserRole.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Server/src/Kinopoisk/server/services/ImagesDownloaderImplementation.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="UserPool.getUser(seanceId)" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

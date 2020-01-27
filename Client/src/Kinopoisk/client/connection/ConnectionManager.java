@@ -82,7 +82,7 @@ public class ConnectionManager {
         try {
             authService = (AuthenticationService) factory.create(AuthenticationService.class, url + "/AuthenticationService");
             dataService = (DataService) factory.create(DataService.class, url + "/DataService");
-            imagesDownloader = (ImagesDownloader) factory.create(ImagesDownloader.class, url + "/ImagesDownloader/");
+            imagesDownloader = (ImagesDownloader) factory.create(ImagesDownloader.class, url + "/ImagesDownloader");
             ping = (Ping) factory.create(Ping.class, url + "/Ping");
         } catch (MalformedURLException e) {
             e.printStackTrace();

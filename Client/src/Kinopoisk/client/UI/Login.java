@@ -71,20 +71,20 @@ public class Login {
     }
 
     private static void authorizeViewer(){
-        enterUserName.setText("image");
-        enterPassword.setText("image");
+        enterUserName.setText("test");
+        enterPassword.setText("test");
     }
 
     public static class ButEvListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (!enterUserName.getText().isEmpty() && !enterPassword.getText().isEmpty())
+            if (!enterUserName.getText().isEmpty() && enterPassword.getPassword().length != 0)
             {
                 String seanceId = null;
                 ConnectionManager.setUrl("" + host.getText());
                 try {
-                    seanceId = ConnectionManager.getInstance().getAuthService().login(enterUserName.getText(), enterPassword.getText());
+                    seanceId = ConnectionManager.getInstance().getAuthService().login(enterUserName.getText(), enterPassword.getPassword());
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

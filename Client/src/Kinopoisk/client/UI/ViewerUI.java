@@ -194,6 +194,7 @@ public class ViewerUI {
     private static JButton studio = new JButton();
     public static JLabel genre = new JLabel();
     private static JLabel age = new JLabel();
+    private static JLabel poster = new JLabel();
 
     private static JFrame filmFrame;
     public static void viewFilm(){
@@ -201,6 +202,8 @@ public class ViewerUI {
         Film selectedFilm = ConnectionManager.getInstance().getDataService().getFilm(((Film) films.getSelectedValue()).getName());
         name.setText(selectedFilm.getName());
         name.setFont(new Font("Times New Roman",Font.BOLD,  20));
+        poster.setIcon(new ImageIcon(selectedFilm.getPoster(),selectedFilm.getName()));
+        poster.setPreferredSize(new Dimension(400, 250));
         ReleaseDate date = selectedFilm.getReleaseDate();
         date1.setText(date.getWorld());
         date2.setText(date.getRus());
@@ -219,6 +222,7 @@ public class ViewerUI {
         filmFrame.setBackground(Color.getHSBColor(33, 23, 100));
         filmFrame.setBounds(700, 450, 600, 350);
 
+        filmFrame.pack();
         filmFrame.setVisible(true);
         filmFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -353,7 +357,12 @@ public class ViewerUI {
 
         c.gridx = 0;
         c.gridy = 1;
+        c.gridwidth = 2;
         pane.add(label1, c);
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 0;
+        pane.add(poster, c);
         c.gridx = 2;
         c.gridy = 1;
         c.gridwidth = 3;
